@@ -157,7 +157,7 @@ dependencies = [
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "dev"]
-content_hash = "sha256:985df6d3907b5403914ad6680c510840439c764108f897bb1d998a1ca1d2e749"
+content_hash = "sha256:9d5d0622b8f28eca433d3e7c20a101b4e9a02948d4491c2da5d26cfc79934c1b"
 
 [metadata.files]
 "black 23.3.0" = [

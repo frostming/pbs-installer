@@ -5,6 +5,7 @@ authors = [
     {name = "Frost Ming", email = "me@frostming.com"},
 ]
 dependencies = [
+    "requests>=2.31.0",
     "zstandard>=0.21.0",
 ]
 requires-python = ">=3.7"
@@ -21,7 +22,6 @@ build-backend = "pdm.backend"
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "requests>=2.31.0",
     "black>=23.3.0",
 ]
 
