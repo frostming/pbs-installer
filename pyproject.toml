@@ -5,13 +5,17 @@ authors = [
     {name = "Frost Ming", email = "me@frostming.com"},
 ]
 dependencies = [
-    "requests>=2.31.0",
     "zstandard>=0.21.0",
 ]
 requires-python = ">=3.7"
 readme = "README.md"
 license = {text = "MIT"}
 dynamic = ["version"]
+
+[project.optional-dependencies]
+full = [
+    "requests>=2.24.0",
+]
 
 [project.scripts]
 pbs-install = "pbs_installer.__main__:main"

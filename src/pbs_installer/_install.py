@@ -7,13 +7,12 @@ import tempfile
 from typing import TYPE_CHECKING
 from urllib.parse import unquote
 
-import requests
-
 from ._utils import PythonVersion, get_arch_platform, unpack_tar
 
 logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
+    import requests
     from _typeshed import StrPath
 
 THIS_ARCH, THIS_PLATFORM = get_arch_platform()
@@ -57,6 +56,11 @@ def _read_sha256(url: str, sess: requests.Session) -> str | None:
 def download(url: str, destination: StrPath, session: requests.Session | None = None) -> str:
     logger.debug("Downloading url %s to %s", url, destination)
     filename = unquote(url.rsplit("/")[-1])
+    try:
+        import requests
+    except ModuleNotFoundError:
+        raise RuntimeError("You must install requests to use this function") from None
+
     if session is None:
         session = requests.Session()
 
