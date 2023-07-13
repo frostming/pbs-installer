@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import logging
 import os
 import tempfile
 from typing import TYPE_CHECKING
@@ -8,7 +9,9 @@ from urllib.parse import unquote
 
 import requests
 
-from ._utils import get_arch_platform
+from ._utils import PythonVersion, get_arch_platform, unpack_tar
+
+logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     from _typeshed import StrPath
@@ -26,7 +29,7 @@ def _get_headers() -> dict[str, str] | None:
     }
 
 
-def get_download_link(request: str) -> str:
+def get_download_link(request: str) -> tuple[PythonVersion, str]:
     from ._versions import PYTHON_VERSIONS
 
     for py_ver, urls in PYTHON_VERSIONS.items():
@@ -34,21 +37,25 @@ def get_download_link(request: str) -> str:
             continue
 
         for arch, platform, url in urls:
+            logger.debug(
+                "Checking %s %s with current system %s %s", arch, platform, THIS_ARCH, THIS_PLATFORM
+            )
             if (arch, platform) == (THIS_ARCH, THIS_PLATFORM):
-                return url
-            else:
-                break
+                return py_ver, url
+        break
     raise ValueError(f"Could not find a CPython {request!r} matching this system")
 
 
 def _read_sha256(url: str, sess: requests.Session) -> str | None:
     resp = sess.get(url + ".sha256", headers=_get_headers())
     if not resp.ok:
+        logger.warning("No checksum found for %s, this would be insecure", url)
         return None
     return resp.text.strip()
 
 
 def download(url: str, destination: StrPath, session: requests.Session | None = None) -> str:
+    logger.debug("Downloading url %s to %s", url, destination)
     filename = unquote(url.rsplit("/")[-1])
     if session is None:
         session = requests.Session()
@@ -78,7 +85,12 @@ def install_file(
 
     if original_filename is None:
         original_filename = str(filename)
-
+    logger.debug(
+        "Extracting file %s to %s with original filename %s",
+        filename,
+        destination,
+        original_filename,
+    )
     if original_filename.endswith(".zst"):
         dctx = zstd.ZstdDecompressor()
         with tempfile.TemporaryFile(suffix=".tar") as ofh:
@@ -86,16 +98,18 @@ def install_file(
                 dctx.copy_stream(ifh, ofh)
             ofh.seek(0)
             with tarfile.open(fileobj=ofh) as z:
-                z.extractall(destination)
+                unpack_tar(z, destination, 1)
 
     else:
         with tarfile.open(filename) as z:
-            z.extractall(destination)
+            unpack_tar(z, destination, 1)
 
 
 def install(request: str, destination: StrPath, session: requests.Session | None = None) -> None:
     """Download and install the requested python version"""
-    url = get_download_link(request)
+    ver, url = get_download_link(request)
+    logger.debug("Installing %s", ver)
+    os.makedirs(destination, exist_ok=True)
     with tempfile.NamedTemporaryFile() as tf:
         tf.close()
         original_filename = download(url, tf.name, session)

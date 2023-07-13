@@ -12,6 +12,9 @@ readme = "README.md"
 license = {text = "MIT"}
 dynamic = ["version"]
 
+[project.scripts]
+pbs-install = "pbs_installer.__main__:main"
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
