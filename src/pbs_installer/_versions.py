@@ -1478,4 +1478,11 @@ PYTHON_VERSIONS: dict[PythonVersion, list[tuple[str, str, str]]] = {
             "https://github.com/indygreg/python-build-standalone/releases/download/20190617/cpython-3.7.3-windows-amd64-20190618T0516.tar.zst",
         ),
     ],
+    PythonVersion("cpython", 3, 7, 1): [
+        (
+            "x86_64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20181218/cpython-3.7.1-linux64-20181218T1905.tar.zst",
+        ),
+    ],
 }
