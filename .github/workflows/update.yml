@@ -23,12 +23,13 @@ jobs:
           pdm install
 
       - run: pdm run update
+        id: update
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Push changes
-        if: success()
+        if: steps.update.outcome == 'success'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
