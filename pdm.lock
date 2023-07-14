@@ -39,7 +39,7 @@ summary = "The Real First Universal Charset Detector. Open, modern and actively 
 
 [[package]]
 name = "click"
-version = "8.1.4"
+version = "8.1.5"
 requires_python = ">=3.7"
 summary = "Composable command line interface toolkit"
 dependencies = [
@@ -156,8 +156,8 @@ dependencies = [
 [metadata]
 lock_version = "4.2"
 cross_platform = true
-groups = ["default", "dev", "full"]
-content_hash = "sha256:e78b7f22d9fa89d454d8e2f8423276f131852f707b7991706b57990ac74736fb"
+groups = ["default", "all", "dev"]
+content_hash = "sha256:0a05625a59f21a9cd43c72c075c2f0881739069d989a1b67ba1bc556feca2ff7"
 
 [metadata.files]
 "black 23.3.0" = [
@@ -334,9 +334,9 @@ content_hash = "sha256:e78b7f22d9fa89d454d8e2f8423276f131852f707b7991706b57990ac
     {url = "https://files.pythonhosted.org/packages/f9/0d/514be8597d7a96243e5467a37d337b9399cec117a513fcf9328405d911c0/charset_normalizer-3.2.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8700f06d0ce6f128de3ccdbc1acaea1ee264d2caa9ca05daaf492fde7c2a7200"},
     {url = "https://files.pythonhosted.org/packages/fd/17/0a1dba835ec37a3cc025f5c49653effb23f8cd391dea5e60a5696d639a92/charset_normalizer-3.2.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:8c2f5e83493748286002f9369f3e6607c565a6a90425a3a1fef5ae32a36d749d"},
 ]
-"click 8.1.4" = [
-    {url = "https://files.pythonhosted.org/packages/77/88/b0cc5fe95c31c301e9823ea9b028f669c0dcfa205ff71111037a5ed4892c/click-8.1.4.tar.gz", hash = "sha256:b97d0c74955da062a7d4ef92fadb583806a585b2ea81958a81bd72726cbb8e37"},
-    {url = "https://files.pythonhosted.org/packages/f9/a6/dc327484918f1656cc9fcebebe77efcfc0ef0d447fa925a8760ee55abe0e/click-8.1.4-py3-none-any.whl", hash = "sha256:2739815aaa5d2c986a88f1e9230c55e17f0caad3d958a5e13ad0797c166db9e3"},
+"click 8.1.5" = [
+    {url = "https://files.pythonhosted.org/packages/22/b3/1da4ea0efa2e5ae410a347be614162ca08bd24a84059938aa5122d1e751b/click-8.1.5-py3-none-any.whl", hash = "sha256:e576aa487d679441d7d30abb87e1b43d24fc53bffb8758443b1a9e1cee504548"},
+    {url = "https://files.pythonhosted.org/packages/7e/ad/7a6a96fab480fb2fbf52f782b2deb3abe1d2c81eca3ef68a575b5a6a4f2e/click-8.1.5.tar.gz", hash = "sha256:4be4b1af8d665c6d942909916d31a213a106800c47d0eeba73d34da3cbc11367"},
 ]
 "colorama 0.4.6" = [
     {url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
