@@ -20,7 +20,6 @@ set -x
 git add "$LIBRARY_PATH/"
 git commit -m "Bump version to $DATE_TAG"
 git tag -a "$DATE_TAG" -m "Bump version to $DATE_TAG"
-git push --follow-tags
 set +x
 
 echo "All done!"
