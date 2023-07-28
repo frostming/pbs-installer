@@ -1,5 +1,9 @@
+from __future__ import annotations
+
 import logging
-from argparse import ArgumentParser
+from argparse import SUPPRESS, Action, ArgumentParser, Namespace
+from collections.abc import Sequence
+from typing import Any
 
 from ._install import install
 
@@ -12,14 +16,47 @@ def _setup_logger(verbose: bool):
     logger.setLevel(logging.DEBUG if verbose else logging.WARNING)
 
 
+class ListAction(Action):
+    def __init__(
+        self,
+        option_strings: Sequence[str],
+        dest: str = SUPPRESS,
+        default: Any = SUPPRESS,
+        help: str | None = None,
+    ) -> None:
+        super().__init__(
+            option_strings=option_strings, dest=dest, nargs=0, default=default, help=help
+        )
+
+    def __call__(
+        self,
+        parser: ArgumentParser,
+        namespace: Namespace,
+        values: str | Sequence[Any] | None,
+        option_string: str | None = None,
+    ) -> None:
+        self.list_versions()
+        parser.exit()
+
+    def list_versions(self) -> None:
+        from ._versions import PYTHON_VERSIONS
+
+        for version in PYTHON_VERSIONS:
+            print(f"- {version}")
+
+
 def main():
     parser = ArgumentParser("pbs-install", description="Installer for Python Build Standalone")
-    parser.add_argument("version", help="The version of Python to install, e.g. 3.8,3.10.4")
-    parser.add_argument(
+    install_group = parser.add_argument_group("Install Arguments")
+    install_group.add_argument("version", help="The version of Python to install, e.g. 3.8,3.10.4")
+    install_group.add_argument(
         "--version-dir", help="Install to a subdirectory named by the version", action="store_true"
     )
+    install_group.add_argument(
+        "-d", "--destination", help="The directory to install to", required=True
+    )
     parser.add_argument("-v", "--verbose", help="Enable verbose logging", action="store_true")
-    parser.add_argument("-d", "--destination", help="The directory to install to", required=True)
+    parser.add_argument("-l", "--list", action=ListAction, help="List installable versions")
 
     args = parser.parse_args()
     _setup_logger(args.verbose)
