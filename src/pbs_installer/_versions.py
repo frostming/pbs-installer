@@ -4,6 +4,43 @@ from __future__ import annotations
 from ._utils import PythonVersion
 
 PYTHON_VERSIONS: dict[PythonVersion, list[tuple[str, str, str]]] = {
+    PythonVersion("cpython", 3, 11, 4): [
+        (
+            "arm64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "arm64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-i686-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+        ),
+    ],
     PythonVersion("cpython", 3, 11, 3): [
         (
             "arm64",
@@ -76,6 +113,43 @@ PYTHON_VERSIONS: dict[PythonVersion, list[tuple[str, str, str]]] = {
             "x86_64",
             "windows",
             "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+        ),
+    ],
+    PythonVersion("cpython", 3, 10, 12): [
+        (
+            "arm64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "arm64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-i686-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
         ),
     ],
     PythonVersion("cpython", 3, 10, 11): [
@@ -446,6 +520,43 @@ PYTHON_VERSIONS: dict[PythonVersion, list[tuple[str, str, str]]] = {
             "x86_64",
             "windows",
             "https://github.com/indygreg/python-build-standalone/releases/download/20211017/cpython-3.10.0-x86_64-pc-windows-msvc-shared-pgo-20211017T1616.tar.zst",
+        ),
+    ],
+    PythonVersion("cpython", 3, 9, 17): [
+        (
+            "arm64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "arm64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-i686-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "i686",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "darwin",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "linux",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+        ),
+        (
+            "x86_64",
+            "windows",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
         ),
     ],
     PythonVersion("cpython", 3, 9, 16): [
@@ -952,37 +1063,37 @@ PYTHON_VERSIONS: dict[PythonVersion, list[tuple[str, str, str]]] = {
         (
             "arm64",
             "darwin",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
         ),
         (
             "arm64",
             "linux",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
         ),
         (
             "i686",
             "linux",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-i686-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-i686-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
         ),
         (
             "i686",
             "windows",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
         ),
         (
             "x86_64",
             "darwin",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
         ),
         (
             "x86_64",
             "linux",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
         ),
         (
             "x86_64",
             "windows",
-            "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16%2B20230507-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.8.16%2B20230726-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
         ),
     ],
     PythonVersion("cpython", 3, 8, 15): [
