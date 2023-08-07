@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from typing import Any
 
 from ._install import install
+from ._utils import get_available_arch_platforms
 
 
 def _setup_logger(verbose: bool):
@@ -46,6 +47,7 @@ class ListAction(Action):
 
 
 def main():
+    archs, platforms = get_available_arch_platforms()
     parser = ArgumentParser("pbs-install", description="Installer for Python Build Standalone")
     install_group = parser.add_argument_group("Install Arguments")
     install_group.add_argument("version", help="The version of Python to install, e.g. 3.8,3.10.4")
@@ -55,12 +57,22 @@ def main():
     install_group.add_argument(
         "-d", "--destination", help="The directory to install to", required=True
     )
+    install_group.add_argument("--arch", choices=archs, help="Override the architecture to install")
+    install_group.add_argument(
+        "--platform", choices=platforms, help="Override the platform to install"
+    )
     parser.add_argument("-v", "--verbose", help="Enable verbose logging", action="store_true")
     parser.add_argument("-l", "--list", action=ListAction, help="List installable versions")
 
     args = parser.parse_args()
     _setup_logger(args.verbose)
-    install(args.version, args.destination, version_dir=args.version_dir)
+    install(
+        args.version,
+        args.destination,
+        version_dir=args.version_dir,
+        arch=args.arch,
+        platform=args.platform,
+    )
     print("Done!")
 
 

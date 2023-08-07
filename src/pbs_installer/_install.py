@@ -28,23 +28,32 @@ def _get_headers() -> dict[str, str] | None:
     }
 
 
-def get_download_link(request: str) -> tuple[PythonVersion, str]:
+def get_download_link(
+    request: str, arch: str | None = None, platform: str | None = None
+) -> tuple[PythonVersion, str]:
     """Get the download URL matching the given requested version.
 
     :param request: The version of Python to install, e.g. 3.8,3.10.4
+    :param arch: The architecture to install, e.g. x86_64, arm64
+    :param platform: The platform to install, e.g. linux, macos
     :return: A tuple of the PythonVersion and the download URL
     """
     from ._versions import PYTHON_VERSIONS
+
+    if arch is None:
+        arch = THIS_ARCH
+    if platform is None:
+        platform = THIS_PLATFORM
 
     for py_ver, urls in PYTHON_VERSIONS.items():
         if not py_ver.matches(request):
             continue
 
-        for arch, platform, url in urls:
+        for iarch, iplatform, url in urls:
             logger.debug(
-                "Checking %s %s with current system %s %s", arch, platform, THIS_ARCH, THIS_PLATFORM
+                "Checking %s %s with requested system %s %s", iarch, iplatform, arch, platform
             )
-            if (arch, platform) == (THIS_ARCH, THIS_PLATFORM):
+            if (iarch, iplatform) == (arch, platform):
                 return py_ver, url
         break
     raise ValueError(f"Could not find a CPython {request!r} matching this system")
@@ -133,6 +142,8 @@ def install(
     destination: StrPath,
     version_dir: bool = False,
     session: requests.Session | None = None,
+    arch: str | None = None,
+    platform: str | None = None,
 ) -> None:
     """Download and install the requested python version.
 
@@ -140,8 +151,10 @@ def install(
     :param destination: The directory to install to
     :param version_dir: Whether to install to a subdirectory named with the python version
     :param session: A requests session to use for downloading
+    :param arch: The architecture to install, e.g. x86_64, arm64
+    :param platform: The platform to install, e.g. linux, macos
     """
-    ver, url = get_download_link(request)
+    ver, url = get_download_link(request, arch=arch, platform=platform)
     if version_dir:
         destination = os.path.join(destination, str(ver))
     logger.debug("Installing %s to %s", ver, destination)

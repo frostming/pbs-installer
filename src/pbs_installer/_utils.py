@@ -57,3 +57,15 @@ def unpack_tar(tf: tarfile.TarFile, destination: StrPath, skip_parts: int = 0) -
         fn = "/".join(parts[skip_parts:])
         member.name = fn
         tf.extract(member, destination)
+
+
+def get_available_arch_platforms() -> tuple[list[str], list[str]]:
+    from ._versions import PYTHON_VERSIONS
+
+    archs: set[str] = set()
+    platforms: set[str] = set()
+    for items in PYTHON_VERSIONS.values():
+        for item in items:
+            archs.add(item[0])
+            platforms.add(item[1])
+    return sorted(archs), sorted(platforms)
