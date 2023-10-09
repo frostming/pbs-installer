@@ -12,7 +12,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pdm-project/setup-pdm@v3
         with:
           python-version: '3.11'
@@ -32,5 +32,10 @@ jobs:
         if: steps.update.outcome == 'success'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
           tags: true
+
+      - name: Create Release
+        uses: peter-evans/repository-dispatch@v2
+        if: steps.update.outcome == 'success'
+        with:
+          event-type: release
