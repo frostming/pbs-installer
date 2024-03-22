@@ -4,15 +4,14 @@ description = "Installer for Python Build Standalone"
 authors = [
     {name = "Frost Ming", email = "me@frostming.com"},
 ]
-dependencies = []
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
 dynamic = ["version"]
 
 [project.optional-dependencies]
 download = [
-    "requests>=2.24.0",
+    "httpx<1,>=0.27.0",
 ]
 install = [
     "zstandard>=0.21.0",
@@ -28,34 +27,18 @@ pbs-install = "pbs_installer.__main__:main"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pdm.dev-dependencies]
-dev = [
-    "black>=23.3.0",
-]
-
 [tool.pdm.version]
 source = "scm"
 
 [tool.pdm.scripts]
 update = { shell = "./scripts/update.sh" }
 
-[tool.black]
-line-length = 100
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-  | src/pythonfinder/_vendor
-)
-'''
-
+[tool.pdm.dev-dependencies]
+doc = [
+    "mkdocs>=1.5.3",
+    "mkdocs-material>=9.5.14",
+    "mkdocstrings[python]>=0.24",
+]
 [tool.ruff]
 line-length = 100
 extend-select = ["I"]

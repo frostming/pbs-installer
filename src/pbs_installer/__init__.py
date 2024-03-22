@@ -1,8 +1,5 @@
 """
-Installer for Python Build Standalone
-
-Author: frostming
-License: MIT
+Core functions for the PBS Installer.
 """
 
 from ._install import download, get_download_link, install, install_file

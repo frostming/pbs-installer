@@ -1,0 +1,14 @@
+site_name: pbs-installer
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings
+
+nav:
+  - Home: index.md
+
+watch:
+  - src/
