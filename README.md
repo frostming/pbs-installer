@@ -6,4 +6,4 @@ An installer for @indygreg's [python-build-standalone](https://github.com/indygr
 
 The list of python versions are kept sync with the upstream automatically, via a periodically GitHub Action.
 
-[📖 Read the docs](https://readthedocs.io/pbs-installer)
+[📖 Read the docs](http://pbs-installer.readthedocs.io/)
