@@ -50,7 +50,9 @@ def main():
     archs, platforms = get_available_arch_platforms()
     parser = ArgumentParser("pbs-install", description="Installer for Python Build Standalone")
     install_group = parser.add_argument_group("Install Arguments")
-    install_group.add_argument("version", help="The version of Python to install, e.g. 3.8,3.10.4")
+    install_group.add_argument(
+        "version", help="The version of Python to install, e.g. 3.8, 3.10.4, pypy@3.10"
+    )
     install_group.add_argument(
         "--version-dir", help="Install to a subdirectory named by the version", action="store_true"
     )
@@ -66,12 +68,16 @@ def main():
 
     args = parser.parse_args()
     _setup_logger(args.verbose)
+    impl, has_amp, version = args.version.rpartition("@")
+    if not has_amp:
+        impl = "cpython"
     install(
-        args.version,
+        version,
         args.destination,
         version_dir=args.version_dir,
         arch=args.arch,
         platform=args.platform,
+        implementation=impl,
     )
     print("Done!")
 

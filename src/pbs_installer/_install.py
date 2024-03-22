@@ -4,18 +4,18 @@ import hashlib
 import logging
 import os
 import tempfile
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Tuple
 from urllib.parse import unquote
 
 from ._utils import PythonVersion, get_arch_platform, unpack_tar
-
-logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     import httpx
     from _typeshed import StrPath
 
+logger = logging.getLogger(__name__)
 THIS_ARCH, THIS_PLATFORM = get_arch_platform()
+PythonFile = Tuple[str, str | None]
 
 
 def _get_headers() -> dict[str, str] | None:
@@ -29,14 +29,18 @@ def _get_headers() -> dict[str, str] | None:
 
 
 def get_download_link(
-    request: str, arch: str | None = None, platform: str | None = None
-) -> tuple[PythonVersion, str]:
+    request: str,
+    arch: str = THIS_ARCH,
+    platform: str = THIS_PLATFORM,
+    implementation: str = "cpython",
+) -> tuple[PythonVersion, PythonFile]:
     """Get the download URL matching the given requested version.
 
     Parameters:
         request: The version of Python to install, e.g. 3.8,3.10.4
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
+        implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
 
     Returns:
         A tuple of the PythonVersion and the download URL
@@ -48,47 +52,35 @@ def get_download_link(
     """
     from ._versions import PYTHON_VERSIONS
 
-    if arch is None:
-        arch = THIS_ARCH
-    if platform is None:
-        platform = THIS_PLATFORM
-
     for py_ver, urls in PYTHON_VERSIONS.items():
-        if not py_ver.matches(request):
+        if not py_ver.matches(request, implementation):
             continue
 
-        for iarch, iplatform, url in urls:
-            logger.debug(
-                "Checking %s %s with requested system %s %s", iarch, iplatform, arch, platform
-            )
-            if (iarch, iplatform) == (arch, platform):
-                return py_ver, url
-        break
-    raise ValueError(f"Could not find a CPython {request!r} matching this system")
+        matched = urls.get((platform, arch))
+        if matched is not None:
+            return py_ver, matched
+    raise ValueError(
+        f"Could not find a version matching version={request!r}, implementation={implementation}"
+    )
 
 
-def _read_sha256(url: str, client: httpx.Client) -> str | None:
-    resp = client.get(url + ".sha256", headers=_get_headers())
-    if not resp.is_success:
-        logger.warning("No checksum found for %s, this would be insecure", url)
-        return None
-    return resp.text.strip()
-
-
-def download(url: str, destination: StrPath, client: httpx.Client | None = None) -> str:
+def download(
+    python_file: PythonFile, destination: StrPath, client: httpx.Client | None = None
+) -> str:
     """Download the given url to the destination.
 
     Note: Extras required
         `pbs-installer[download]` must be installed to use this function.
 
     Parameters:
-        url: The url to download
+        python_file: The (url, checksum) tuple to download
         destination: The file path to download to
         client: A http.Client to use for downloading, or None to create a new one
 
     Returns:
         The original filename of the downloaded file
     """
+    url, checksum = python_file
     logger.debug("Downloading url %s to %s", url, destination)
     try:
         import httpx
@@ -100,9 +92,13 @@ def download(url: str, destination: StrPath, client: httpx.Client | None = None)
 
     filename = unquote(url.rsplit("/")[-1])
     hasher = hashlib.sha256()
-    checksum = _read_sha256(url, client)
+    if not checksum:
+        logger.warning("No checksum found for %s, this would be insecure", url)
 
-    with open(destination, "wb") as f, client.stream("GET", url, headers=_get_headers()) as resp:
+    with (
+        open(destination, "wb") as f,
+        client.stream("GET", url, headers=_get_headers()) as resp,
+    ):
         resp.raise_for_status()
         for chunk in resp.iter_bytes(chunk_size=8192):
             if checksum:
@@ -161,6 +157,7 @@ def install(
     client: httpx.Client | None = None,
     arch: str | None = None,
     platform: str | None = None,
+    implementation: str = "cpython",
 ) -> None:
     """Download and install the requested python version.
 
@@ -174,6 +171,7 @@ def install(
         client: A httpx.Client to use for downloading
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
+        implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
 
     Examples:
         >>> install("3.10", "./python")
@@ -181,12 +179,19 @@ def install(
         >>> install("3.10", "./python", version_dir=True)
         Installing cpython@3.10.4 to ./python/cpython@3.10.4
     """
-    ver, url = get_download_link(request, arch=arch, platform=platform)
+    if platform is None:
+        platform = THIS_PLATFORM
+    if arch is None:
+        arch = THIS_ARCH
+
+    ver, python_file = get_download_link(
+        request, arch=arch, platform=platform, implementation=implementation
+    )
     if version_dir:
         destination = os.path.join(destination, str(ver))
     logger.debug("Installing %s to %s", ver, destination)
     os.makedirs(destination, exist_ok=True)
     with tempfile.NamedTemporaryFile() as tf:
         tf.close()
-        original_filename = download(url, tf.name, client)
+        original_filename = download(python_file, tf.name, client)
         install_file(tf.name, destination, original_filename)

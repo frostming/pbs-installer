@@ -7,21 +7,25 @@ if TYPE_CHECKING:
     from _typeshed import StrPath
 
 ARCH_MAPPING = {
-    "aarch64": "arm64",
+    "arm64": "aarch64",
     "amd64": "x86_64",
+    "i686": "x86",
 }
+PLATFORM_MAPPING = {"darwin": "macos"}
 
 
 class PythonVersion(NamedTuple):
-    kind: str
+    implementation: str
     major: int
     minor: int
     micro: int
 
     def __str__(self) -> str:
-        return f"{self.kind}@{self.major}.{self.minor}.{self.micro}"
+        return f"{self.implementation}@{self.major}.{self.minor}.{self.micro}"
 
-    def matches(self, request: str) -> bool:
+    def matches(self, request: str, implementation: str) -> bool:
+        if implementation != self.implementation:
+            return False
         try:
             parts = tuple(int(v) for v in request.split("."))
         except ValueError:
@@ -46,7 +50,7 @@ def get_arch_platform() -> tuple[str, str]:
 
     plat = platform.system().lower()
     arch = platform.machine().lower()
-    return ARCH_MAPPING.get(arch, arch), plat
+    return ARCH_MAPPING.get(arch, arch), PLATFORM_MAPPING.get(plat, plat)
 
 
 def unpack_tar(tf: tarfile.TarFile, destination: StrPath, skip_parts: int = 0) -> None:
