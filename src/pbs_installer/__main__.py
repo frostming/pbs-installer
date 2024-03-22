@@ -57,6 +57,9 @@ def main():
         "--version-dir", help="Install to a subdirectory named by the version", action="store_true"
     )
     install_group.add_argument(
+        "--build-dir", help="Include the build directory", action="store_true"
+    )
+    install_group.add_argument(
         "-d", "--destination", help="The directory to install to", required=True
     )
     install_group.add_argument("--arch", choices=archs, help="Override the architecture to install")
@@ -78,6 +81,7 @@ def main():
         arch=args.arch,
         platform=args.platform,
         implementation=impl,
+        build_dir=args.build_dir,
     )
     print("Done!")
 
