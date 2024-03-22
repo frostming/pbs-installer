@@ -39,7 +39,10 @@ doc = [
     "mkdocs-material>=9.5.14",
     "mkdocstrings[python]>=0.24",
 ]
+
 [tool.ruff]
 line-length = 100
-extend-select = ["I"]
 target-version = "py310"
+
+[tool.ruff.lint]
+extend-select = ["I"]

@@ -6,7 +6,7 @@ LIBRARY_PATH=src/pbs_installer
 
 python3 "$FIND_SCRIPT" "$LIBRARY_PATH/_versions.py"
 
-black src/pbs_installer
+pipx run ruff format $LIBRARY_PATH
 
 if [[ ! $(git status --porcelain) ]]; then
   echo "No changes to commit"
