@@ -1,5 +1,8 @@
 site_name: pbs-installer
 
+repo_url: https://github.com/frostming/pbs-installer
+
+
 theme:
   name: material
 
@@ -9,6 +12,21 @@ plugins:
 
 nav:
   - Home: index.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/frostming
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/frostming90
+    - icon: fontawesome/brands/mastodon
+      link: https://mas.to/@frostming
+    - icon: fontawesome/solid/circle-dollar-to-slot
+      link: https://github.com/sponsors/frostming
+  chatbot:
+    url: https://2prxfnwkygf4vexczrbpcq.streamlit.app/?embed=true
+
+copyright: Copyright &copy; 2023 <a href="https://frostming.com">Frost Ming</a>
 
 watch:
   - src/
