@@ -7,7 +7,7 @@ import tempfile
 from typing import TYPE_CHECKING, Tuple
 from urllib.parse import unquote
 
-from ._utils import PythonVersion, get_arch_platform, unpack_tar
+from ._utils import PythonVersion, get_arch_platform
 
 if TYPE_CHECKING:
     import httpx
@@ -111,7 +111,10 @@ def download(
 
 
 def install_file(
-    filename: StrPath, destination: StrPath, original_filename: str | None = None
+    filename: StrPath,
+    destination: StrPath,
+    original_filename: str | None = None,
+    build_dir: bool = False,
 ) -> None:
     """Unpack the downloaded file to the destination.
 
@@ -122,11 +125,10 @@ def install_file(
         filename: The file to unpack
         destination: The directory to unpack to
         original_filename: The original filename of the file, if it was renamed
+        build_dir: Whether to include the `build/` directory from indygreg builds
     """
 
-    import tarfile
-
-    import zstandard as zstd
+    from ._utils import unpack_tar, unpack_zip, unpack_zst
 
     if original_filename is None:
         original_filename = str(filename)
@@ -137,17 +139,11 @@ def install_file(
         original_filename,
     )
     if original_filename.endswith(".zst"):
-        dctx = zstd.ZstdDecompressor()
-        with tempfile.TemporaryFile(suffix=".tar") as ofh:
-            with open(filename, "rb") as ifh:
-                dctx.copy_stream(ifh, ofh)
-            ofh.seek(0)
-            with tarfile.open(fileobj=ofh) as z:
-                unpack_tar(z, destination, 1)
-
+        unpack_zst(filename, destination, build_dir)
+    elif original_filename.endswith(".zip"):
+        unpack_zip(filename, destination, build_dir)
     else:
-        with tarfile.open(filename) as z:
-            unpack_tar(z, destination, 1)
+        unpack_tar(filename, destination, build_dir)
 
 
 def install(
@@ -158,6 +154,7 @@ def install(
     arch: str | None = None,
     platform: str | None = None,
     implementation: str = "cpython",
+    build_dir: bool = False,
 ) -> None:
     """Download and install the requested python version.
 
@@ -172,6 +169,7 @@ def install(
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
+        build_dir: Whether to include the `build/` directory from indygreg builds
 
     Examples:
         >>> install("3.10", "./python")
@@ -194,4 +192,4 @@ def install(
     with tempfile.NamedTemporaryFile() as tf:
         tf.close()
         original_filename = download(python_file, tf.name, client)
-        install_file(tf.name, destination, original_filename)
+        install_file(tf.name, destination, original_filename, build_dir)
