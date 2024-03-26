@@ -4,7 +4,7 @@ import hashlib
 import logging
 import os
 import tempfile
-from typing import TYPE_CHECKING, Tuple
+from typing import TYPE_CHECKING, Optional, Tuple
 from urllib.parse import unquote
 
 from ._utils import PythonVersion, get_arch_platform
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 THIS_ARCH, THIS_PLATFORM = get_arch_platform()
-PythonFile = Tuple[str, str | None]
+PythonFile = Tuple[str, Optional[str]]
 
 
 def _get_headers() -> dict[str, str] | None:
