@@ -95,15 +95,13 @@ def download(
     if not checksum:
         logger.warning("No checksum found for %s, this would be insecure", url)
 
-    with (
-        open(destination, "wb") as f,
-        client.stream("GET", url, headers=_get_headers()) as resp,
-    ):
-        resp.raise_for_status()
-        for chunk in resp.iter_bytes(chunk_size=8192):
-            if checksum:
-                hasher.update(chunk)
-            f.write(chunk)
+    with open(destination, "wb") as f:
+        with client.stream("GET", url, headers=_get_headers()) as resp:
+            resp.raise_for_status()
+            for chunk in resp.iter_bytes(chunk_size=8192):
+                if checksum:
+                    hasher.update(chunk)
+                f.write(chunk)
 
     if checksum and hasher.hexdigest() != checksum:
         raise RuntimeError(f"Checksum mismatch. Expected {checksum}, got {hasher.hexdigest()}")
