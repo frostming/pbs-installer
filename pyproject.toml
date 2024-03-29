@@ -9,6 +9,9 @@ readme = "README.md"
 license = {text = "MIT"}
 dynamic = ["version"]
 
+[project.urls]
+Repository = "https://github.com/frostming/pbs-installer"
+
 [project.optional-dependencies]
 download = [
     "httpx<1,>=0.27.0",
