@@ -160,7 +160,7 @@ class CPythonFinder(Finder):
 
     async def fetch_indygreg_downloads(self, pages: int = 100) -> list[PythonDownload]:
         """Fetch all the indygreg downloads from the release API."""
-        results: dict[Version, dict[tuple[str, str], list[PythonDownload]]] = {}
+        results: dict[Version, dict[tuple[str, str, bool], list[PythonDownload]]] = {}
 
         for page in range(1, pages):
             log(f"Fetching indygreg release page {page}")
@@ -174,11 +174,14 @@ class CPythonFinder(Finder):
                     url = asset["browser_download_url"]
                     download = self.parse_download_url(url)
                     if download is not None:
+                        install_only = download.triple.flavor == "install_only"
                         (
                             results.setdefault(download.version, {})
                             # For now, we only group by arch and platform, because Rust's PythonVersion doesn't have a notion
                             # of environment. Flavor will never be used to sort download choices and must not be included in grouping.
-                            .setdefault((download.triple.arch, download.triple.platform), [])
+                            .setdefault(
+                                (download.triple.arch, download.triple.platform, install_only), []
+                            )
                             .append(download)
                         )
 
@@ -262,8 +265,7 @@ class CPythonFinder(Finder):
             except ValueError:
                 return len(cls.FLAVOR_PREFERENCES) + 1
 
-        downloads.sort(key=preference)
-        return downloads[0] if downloads else None
+        return min(downloads, key=preference, default=None)
 
     async def fetch_indygreg_checksums(self, downloads: list[PythonDownload], n: int = 10) -> None:
         """Fetch the checksums for the given downloads."""
@@ -359,7 +361,7 @@ class PyPyFinder(Finder):
                         arch=arch,
                         platform=platform,
                         environment=environment,
-                        flavor=None,
+                        flavor="install_only",
                     ),
                     implementation=PythonImplementation.PYPY,
                     filename=file["filename"],
@@ -386,16 +388,22 @@ class PyPyFinder(Finder):
 
 def build_map(
     downloads: list[PythonDownload],
-) -> dict[tuple[PythonImplementation, Version], dict[tuple[str, str], tuple[str, str | None]]]:
+) -> dict[
+    tuple[PythonImplementation, Version], dict[tuple[str, str, bool], tuple[str, str | None]]
+]:
     versions: dict[
-        tuple[PythonImplementation, Version], dict[tuple[str, str], tuple[str, str | None]]
+        tuple[PythonImplementation, Version], dict[tuple[str, str, bool], tuple[str, str | None]]
     ] = {}
     for download in sorted(downloads, key=lambda d: (d.implementation, -d.version)):
         item = versions.setdefault((download.implementation, download.version), {})
-        platform_tuple = (download.triple.platform, download.triple.arch)
-        if platform_tuple in item:
+        platform_triple = (
+            download.triple.platform,
+            download.triple.arch,
+            download.triple.flavor == "install_only",
+        )
+        if platform_triple in item:
             continue
-        item[platform_tuple] = (download.url, download.sha256)
+        item[platform_triple] = (download.url, download.sha256)
     return versions
 
 

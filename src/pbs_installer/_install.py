@@ -33,6 +33,7 @@ def get_download_link(
     arch: str = THIS_ARCH,
     platform: str = THIS_PLATFORM,
     implementation: str = "cpython",
+    build_dir: bool = False,
 ) -> tuple[PythonVersion, PythonFile]:
     """Get the download URL matching the given requested version.
 
@@ -41,6 +42,7 @@ def get_download_link(
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
+        build_dir: Whether to include the `build/` directory from indygreg builds
 
     Returns:
         A tuple of the PythonVersion and the download URL
@@ -56,8 +58,10 @@ def get_download_link(
         if not py_ver.matches(request, implementation):
             continue
 
-        matched = urls.get((platform, arch))
+        matched = urls.get((platform, arch, not build_dir))
         if matched is not None:
+            return py_ver, matched
+        if build_dir and (matched := urls.get((platform, arch, False))) is not None:
             return py_ver, matched
     raise ValueError(
         f"Could not find a version matching version={request!r}, implementation={implementation}"
@@ -137,11 +141,11 @@ def install_file(
         original_filename,
     )
     if original_filename.endswith(".zst"):
-        unpack_zst(filename, destination, build_dir)
+        unpack_zst(filename, destination)
     elif original_filename.endswith(".zip"):
-        unpack_zip(filename, destination, build_dir)
+        unpack_zip(filename, destination)
     else:
-        unpack_tar(filename, destination, build_dir)
+        unpack_tar(filename, destination)
 
 
 def install(
@@ -181,7 +185,7 @@ def install(
         arch = THIS_ARCH
 
     ver, python_file = get_download_link(
-        request, arch=arch, platform=platform, implementation=implementation
+        request, arch=arch, platform=platform, implementation=implementation, build_dir=build_dir
     )
     if version_dir:
         destination = os.path.join(destination, str(ver))

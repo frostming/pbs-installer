@@ -53,36 +53,31 @@ def get_arch_platform() -> tuple[str, str]:
     return ARCH_MAPPING.get(arch, arch), PLATFORM_MAPPING.get(plat, plat)
 
 
-def _unpack_tar(tf: tarfile.TarFile, destination: StrPath, build_dir: bool = False) -> None:
+def _unpack_tar(tf: tarfile.TarFile, destination: StrPath) -> None:
     """Unpack the tarfile to the destination, with the first skip_parts parts of the path removed"""
     members: list[tarfile.TarInfo] = []
-    has_build = any(
-        (p := fn.lstrip("/").split("/")) and len(p) > 1 and p[1] == "build" for fn in tf.getnames()
-    )
     for member in tf.getmembers():
         parts = member.name.lstrip("/").split("/")
-        if build_dir or not has_build:
-            member.name = "/".join(parts[1:])
-        elif len(parts) > 1 and parts[1] == "install":
-            member.name = "/".join(parts[2:])
-        else:
-            continue
+        member.name = "/".join(parts[1:])
         if member.name:
             members.append(member)
     tf.extractall(destination, members=members)
 
 
-def unpack_tar(filename: str, destination: StrPath, build_dir: bool = False) -> None:
+def unpack_tar(filename: str, destination: StrPath) -> None:
     """Unpack the tarfile to the destination"""
     with tarfile.open(filename) as z:
-        _unpack_tar(z, destination, build_dir=build_dir)
+        _unpack_tar(z, destination)
 
 
-def unpack_zst(filename: str, destination: StrPath, build_dir: bool = False) -> None:
+def unpack_zst(filename: str, destination: StrPath) -> None:
     """Unpack the zstd compressed tarfile to the destination"""
     import tempfile
 
-    import zstandard as zstd
+    try:
+        import zstandard as zstd
+    except ModuleNotFoundError:
+        raise ModuleNotFoundError("zstandard is required to unpack .zst files") from None
 
     dctx = zstd.ZstdDecompressor()
     with tempfile.TemporaryFile(suffix=".tar") as ofh:
@@ -90,24 +85,18 @@ def unpack_zst(filename: str, destination: StrPath, build_dir: bool = False) -> 
             dctx.copy_stream(ifh, ofh)
         ofh.seek(0)
         with tarfile.open(fileobj=ofh) as z:
-            _unpack_tar(z, destination, build_dir=build_dir)
+            _unpack_tar(z, destination)
 
 
-def unpack_zip(filename: str, destination: StrPath, build_dir: bool = False) -> None:
+def unpack_zip(filename: str, destination: StrPath) -> None:
     """Unpack the zip file to the destination"""
     import zipfile
 
     with zipfile.ZipFile(filename) as z:
         members: list[zipfile.ZipInfo] = []
-        has_build = any(fn.lstrip("/").split("/")[1] == "build" for fn in z.namelist())
         for member in z.infolist():
             parts = member.filename.lstrip("/").split("/")
-            if (build_dir or not has_build) and len(parts) > 1:
-                member.filename = "/".join(parts[1:])
-            elif len(parts) > 1 and parts[1] == "install":
-                member.filename = "/".join(parts[2:])
-            else:
-                continue
+            member.filename = "/".join(parts[1:])
             if member.filename:
                 members.append(member)
 
