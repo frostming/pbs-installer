@@ -2,7 +2,7 @@
 from __future__ import annotations
 from ._utils import PythonVersion
 
-PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str], tuple[str, str | None]]] = {
+PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str | None]]] = {
     PythonVersion("cpython", 3, 12, 2): {
         ("macos", "aarch64", False): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20240224/cpython-3.12.2%2B20240224-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",

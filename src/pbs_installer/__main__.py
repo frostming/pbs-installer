@@ -9,7 +9,7 @@ from ._install import install
 from ._utils import get_available_arch_platforms
 
 
-def _setup_logger(verbose: bool):
+def _setup_logger(verbose: bool) -> None:
     logger = logging.getLogger("pbs_installer")
     handler = logging.StreamHandler()
     handler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
@@ -46,7 +46,7 @@ class ListAction(Action):
             print(f"- {version}")
 
 
-def main():
+def main() -> None:
     archs, platforms = get_available_arch_platforms()
     parser = ArgumentParser("pbs-install", description="Installer for Python Build Standalone")
     install_group = parser.add_argument_group("Install Arguments")
