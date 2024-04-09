@@ -4,7 +4,7 @@ import hashlib
 import logging
 import os
 import tempfile
-from typing import TYPE_CHECKING, Optional, Tuple
+from typing import TYPE_CHECKING, Optional, Tuple, cast
 from urllib.parse import unquote
 
 from ._utils import PythonVersion, get_arch_platform
@@ -12,6 +12,10 @@ from ._utils import PythonVersion, get_arch_platform
 if TYPE_CHECKING:
     import httpx
     from _typeshed import StrPath
+
+    from typing import Literal
+
+    PythonImplementation = Literal["cpython", "pypy"]
 
 logger = logging.getLogger(__name__)
 THIS_ARCH, THIS_PLATFORM = get_arch_platform()
@@ -32,7 +36,7 @@ def get_download_link(
     request: str,
     arch: str = THIS_ARCH,
     platform: str = THIS_PLATFORM,
-    implementation: str = "cpython",
+    implementation: PythonImplementation = "cpython",
     build_dir: bool = False,
 ) -> tuple[PythonVersion, PythonFile]:
     """Get the download URL matching the given requested version.
@@ -140,6 +144,7 @@ def install_file(
         destination,
         original_filename,
     )
+    filename = cast(str, filename)
     if original_filename.endswith(".zst"):
         unpack_zst(filename, destination)
     elif original_filename.endswith(".zip"):
@@ -155,7 +160,7 @@ def install(
     client: httpx.Client | None = None,
     arch: str | None = None,
     platform: str | None = None,
-    implementation: str = "cpython",
+    implementation: PythonImplementation = "cpython",
     build_dir: bool = False,
 ) -> None:
     """Download and install the requested python version.
