@@ -2901,6 +2901,32 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
             None,
         )
     },
+    PythonVersion("pypy", 3, 10, 14): {
+        ("linux", "aarch64", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-aarch64.tar.bz2",
+            "fc720999bc5050e1d3706b3b6445e695cf42bfc71ebc7c88ed6bb88828b1d385",
+        ),
+        ("linux", "x86", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-linux32.tar.bz2",
+            "0df48aa780159e879ac89a805d143e4a6cd1b842f98046f5a3f865814bfaa2a4",
+        ),
+        ("linux", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-linux64.tar.bz2",
+            "404e6180d6caf9258eaab0c02c72018e9aa8eb03ab9094a0ff17ee5e3b265ac1",
+        ),
+        ("macos", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-macos_x86_64.tar.bz2",
+            "490f2c6ba2489f405444f3b4ad42166da6e2eb73489a9535b206067eaaf21737",
+        ),
+        ("macos", "aarch64", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-macos_arm64.tar.bz2",
+            "6c003376667a95c7a228544649677b9927b8210d6444b901817aad24b8719b93",
+        ),
+        ("windows", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-win64.zip",
+            "e08415a2f35c6ecf2342b504bdfde11e4c5eca3fc5ef7fd2214ff064a5a54396",
+        ),
+    },
     PythonVersion("pypy", 3, 10, 13): {
         ("linux", "aarch64", True): (
             "https://downloads.python.org/pypy/pypy3.10-v7.3.15-aarch64.tar.bz2",
@@ -2951,6 +2977,32 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
         ("windows", "x86_64", True): (
             "https://downloads.python.org/pypy/pypy3.10-v7.3.12-win64.zip",
             "8c3b1d34fb99100e230e94560410a38d450dc844effbee9ea183518e4aff595c",
+        ),
+    },
+    PythonVersion("pypy", 3, 9, 19): {
+        ("linux", "aarch64", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-aarch64.tar.bz2",
+            "de3f2ed3581b30555ac0dd3e4df78a262ec736a36fb2e8f28259f8539b278ef4",
+        ),
+        ("linux", "x86", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-linux32.tar.bz2",
+            "583b6d6dd4e8c07cbc04da04a7ec2bdfa6674825289c2378c5e018d5abe779ea",
+        ),
+        ("linux", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-linux64.tar.bz2",
+            "16f9c5b808c848516e742986e826b833cdbeda09ad8764e8704595adbe791b23",
+        ),
+        ("macos", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-macos_x86_64.tar.bz2",
+            "fda015431621e7e5aa16359d114f2c45a77ed936992c1efff86302e768a6b21c",
+        ),
+        ("macos", "aarch64", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-macos_arm64.tar.bz2",
+            "88f824e7a2d676440d09bc90fc959ae0fd3557d7e2f14bfbbe53d41d159a47fe",
+        ),
+        ("windows", "x86_64", True): (
+            "https://downloads.python.org/pypy/pypy3.9-v7.3.16-win64.zip",
+            "06ec12a5e964dc0ad33e6f380185a4d295178dce6d6df512f508e7aee00a1323",
         ),
     },
     PythonVersion("pypy", 3, 9, 18): {
