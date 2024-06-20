@@ -9,17 +9,21 @@ python3 "$FIND_SCRIPT" "$LIBRARY_PATH/_versions.py"
 pipx run ruff format $LIBRARY_PATH
 
 if [[ ! $(git status --porcelain) ]]; then
-  echo "No changes to commit"
-  exit 1
+    echo "No changes to commit"
+    exit 1
 fi
-# get the current date in YYYY.M.d format
-DATE_TAG=$(date +%Y.%-m.%-d)
+if [ -n "$TARGET_VERSION" ]; then
+    NEW_VERSION=$TARGET_VERSION
+else
+    # get the current date in YYYY.M.d format
+    NEW_VERSION=$(date +%Y.%-m.%-d)
+fi
 
 echo "Commit new files"
 set -x
 git add "$LIBRARY_PATH/"
-git commit -m "Bump version to $DATE_TAG"
-git tag -a "$DATE_TAG" -m "Bump version to $DATE_TAG"
+git commit -m "Bump version to $NEW_VERSION"
+git tag -a "$NEW_VERSION" -m "Bump version to $NEW_VERSION"
 set +x
 
 echo "All done!"
