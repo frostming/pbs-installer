@@ -7,8 +7,6 @@ on:
         description: 'Tag to update'
         required: false
         type: string
-  schedule:
-    - cron: "0 0 * * *"
 
 jobs:
   update:
