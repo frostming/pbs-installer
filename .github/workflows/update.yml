@@ -39,7 +39,7 @@ jobs:
           tags: true
 
       - name: Create Release
-        uses: peter-evans/repository-dispatch@v2
         if: steps.update.outcome == 'success'
+        uses: ncipollo/release-action@v1
         with:
-          event-type: release
+          name: steps.update.outputs.VERSION

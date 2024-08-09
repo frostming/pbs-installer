@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  repository_dispatch:
-    types: [release]
+  release:
+    types:
+      - created
   push:
     branches:
       - main

@@ -26,4 +26,8 @@ git commit -m "Bump version to $NEW_VERSION"
 git tag -a "$NEW_VERSION" -m "Bump version to $NEW_VERSION"
 set +x
 
+if [ -n "$GITHUB_OUTPUT" ]; then
+    echo "VERSION=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+fi
+
 echo "All done!"
