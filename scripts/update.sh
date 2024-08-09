@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+set -exo pipefail
 
 FIND_SCRIPT=$(dirname "$(readlink -f "$0")")/find_versions.py
 LIBRARY_PATH=src/pbs_installer
