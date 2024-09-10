@@ -3,6 +3,56 @@ from __future__ import annotations
 from ._utils import PythonVersion
 
 PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str | None]]] = {
+    PythonVersion("cpython", 3, 12, 6): {
+        ("macos", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "b9b115e897e534bd6c1a4f4949fa3c75d662218c3c94bb47f87e61f8c6df430a",
+        ),
+        ("macos", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
+            "899f46eb592fcac4e834c064e4c901e8a4a6b5864e80b18efd2f0b7c3c050584",
+        ),
+        ("linux", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "93a238ba9707c357c054d665a940e2ef33c7c2e2d4e454c248941e625c3050d9",
+        ),
+        ("linux", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "caac1033f68f69d8978dc8c6b6964cfb9d8a111abc55c03403bd4ece63f331f3",
+        ),
+        ("windows", "x86", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
+            "b278a0100007df0c7ef21fbb3b7e06c9268e6e4a89b719b021fd595c24956b0e",
+        ),
+        ("windows", "x86", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "8e83f98c4b0f83a9ef4c8f90877513feb0bb7f0c2f2c6bc63077511d67e7b3ab",
+        ),
+        ("macos", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "e38c3f031ebfd898f16f10bc73655f377787624f4915113f48d5f017ced0a9de",
+        ),
+        ("macos", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-apple-darwin-install_only.tar.gz",
+            "8c56da91436bee158b0d592aed3393c1fe3da3694ca35950ee1c52935ba8bfd5",
+        ),
+        ("windows", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "6280ce84c87ebaca2c4b42040bad48e7efbfd1b3f323579378ecf043e9fb023d",
+        ),
+        ("windows", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "7566acba13d60fe059263c906a67f2450d7ae3d5749e524ffb21baa68e924cd3",
+        ),
+        ("linux", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "5b560c74201a5fc1d6771cdc12957b4b2f792dea76134b4d060178690c683d04",
+        ),
+        ("linux", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "68ff386c923c59a33a272bd984b8a33fe8117c56ad7f7552e0c2b21937ee3c0b",
+        ),
+    },
     PythonVersion("cpython", 3, 12, 5): {
         ("macos", "aarch64", False): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20240814/cpython-3.12.5%2B20240814-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
@@ -301,6 +351,56 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
         ("linux", "x86_64", True): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20231002/cpython-3.12.0%2B20231002-x86_64-unknown-linux-gnu-install_only.tar.gz",
             "e51a5293f214053ddb4645b2c9f84542e2ef86870b8655704367bd4b29d39fe9",
+        ),
+    },
+    PythonVersion("cpython", 3, 11, 10): {
+        ("macos", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "d06300d9037a1db98dfd1b4d29d1e465f2436fa988771635855d875878adcd01",
+        ),
+        ("macos", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
+            "1e99a02135009dcf2c1fd7aeb6f3c9c92aa34589b4ec06ac9d11a642d2c20934",
+        ),
+        ("linux", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "a211d62c57f8920432ad49ef866d91665172c85d9244be4375d172fad6a62c9f",
+        ),
+        ("linux", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "200a996f00e9a5d49a2cc13f34dbf905acc644a77f911f5b9dd6e1382c3b1a65",
+        ),
+        ("windows", "x86", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
+            "7857bbecf825eb64470a5a97da6c3803091229b9366ddcc21183e94551506452",
+        ),
+        ("windows", "x86", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "cceefc4eef9a5e7f55eb82520676dab2f8efba70a8b1597237cb9d93de5a07fe",
+        ),
+        ("macos", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "b4833aaf11cddb091bf1d909d57bb6ec017c8dcdf93f1bd3f5bd3522ed9095e6",
+        ),
+        ("macos", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-apple-darwin-install_only.tar.gz",
+            "3dbc1a660165b1c92e993a16e71ef389407054c2b3b55cc7b5914499741fe5b1",
+        ),
+        ("windows", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "236b4d7554430ee55d95b475277ed8cd7d9cf73146e01da094d2acf67b559353",
+        ),
+        ("windows", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "40a58c944ff67f754d70e5ea67ee87ff46308887751919c059b10c9fd59e42ab",
+        ),
+        ("linux", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "d606fae7b31a5cb89e40a416a80a2094370d719496d509e194b98e32f57bfeea",
+        ),
+        ("linux", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.11.10%2B20240909-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "277e4ec45719aa0cc5d0cb4ac55d504cf810a0582a6b79f2d0f55c1ad057e29e",
         ),
     },
     PythonVersion("cpython", 3, 11, 9): {
@@ -733,6 +833,56 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
         ("linux", "x86_64", True): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-unknown-linux-gnu-install_only.tar.gz",
             "02a551fefab3750effd0e156c25446547c238688a32fabde2995c941c03a6423",
+        ),
+    },
+    PythonVersion("cpython", 3, 10, 15): {
+        ("macos", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "2934d9bcfecd74d8cbb12baa8ae8855d2632b8aea98710b89827d570ad489e10",
+        ),
+        ("macos", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
+            "c4a52379f7500d3f1d325a9f423704471703566223ba999d260a287f0d470162",
+        ),
+        ("linux", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "567e1de3f44dd13cb99f61595232f1c0d12e9021d517a6caf10c81739a208e7e",
+        ),
+        ("linux", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "e8aa09292266ae1546157a2fb1de20fbce7971ef17ae73fb34bb0febce863e5d",
+        ),
+        ("windows", "x86", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
+            "32cc64b6808df1c2436259138cde30abeba3158dfb9d93b3ada7eb179a9a99a4",
+        ),
+        ("windows", "x86", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "dc94f75ab3487bc63b905162c63e9f7a21b9586d0730acbc092f5e34d3511a2f",
+        ),
+        ("macos", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "a1b0614c2031be8fa47e33d4cf5041b016bd4a9256a76ad0dee3a644f5435cfd",
+        ),
+        ("macos", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-apple-darwin-install_only.tar.gz",
+            "0c534e94b54ba77fd42b370701fcd87598b71d805e5af72a1f5154a649625fcd",
+        ),
+        ("windows", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "ab4a63bc0e4f33f24fe35199bbc422beae12a839348f6a6dcb220f96dd382a51",
+        ),
+        ("windows", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "a97c9fd825999c99381fadb0216eb214e2a0b2ba784955082f4a908565add860",
+        ),
+        ("linux", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "bb0e512e644bf744960476795ac6ee51d930c4ae351c3ef5a140a802773e0f08",
+        ),
+        ("linux", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.10.15%2B20240909-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "5c965abbeae4ebef8d51b7049e8faa2f16bbe95b89dfb820139dea84faf32f90",
         ),
     },
     PythonVersion("cpython", 3, 10, 14): {
@@ -1467,6 +1617,56 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
         ("linux", "x86_64", True): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20211017/cpython-3.10.0-x86_64-unknown-linux-gnu-install_only-20211017T1616.tar.gz",
             None,
+        ),
+    },
+    PythonVersion("cpython", 3, 9, 20): {
+        ("macos", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "68220c77530d5309cd6637b76dc3bf44e883d20613a5797b37b708991d8af32c",
+        ),
+        ("macos", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
+            "7f33b881ccd7c6f0b52786e8fcd5a0ee5783d44d494b5dd8ab87383e418f39ab",
+        ),
+        ("linux", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "97c43e0c97a4b284447a2976879a9580e42cfe57d444162615d3b7c178feda66",
+        ),
+        ("linux", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "b12476fc62367c940c9d2c2dad6bc4d27467cf7bc73b7ef2852d17e54012061b",
+        ),
+        ("windows", "x86", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
+            "4b0de0e419efa1d2676b6ae6c4f453c53ddafba696499282cb32ca822e4f8b99",
+        ),
+        ("windows", "x86", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "bba270fdcb599f16764779f1fd804d2a934f33592f2de2ecc6a051a1c38da6a1",
+        ),
+        ("macos", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "f6affabaf8cd937ed25e519e353462aaa3328b7c161f7a1c0c739be7e95b7f78",
+        ),
+        ("macos", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-apple-darwin-install_only.tar.gz",
+            "32663be9f984bee0ec4f7e483aada7e0597b89c39c0f0ec1bb208efb8b355e5e",
+        ),
+        ("windows", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "fc24a2750976c38651d4ff4dcb90c6ad5947eddfd2c8a5440a2e80d86b6eedc6",
+        ),
+        ("windows", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "519e605766250fd2ff65f24f31b7a2a913a024de4f19cb1139bb9d970722ec8f",
+        ),
+        ("linux", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "09c69f4bca455da9a8528ac4bbf1b72172c3ed6f1304117d5d9e3fd4dcb66b1b",
+        ),
+        ("linux", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.9.20%2B20240909-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "38c652c9728be02744fa10b26a9f755000be5623efb34d60f437b1e80790a4f9",
         ),
     },
     PythonVersion("cpython", 3, 9, 19): {
@@ -2269,6 +2469,56 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
             None,
         ),
     },
+    PythonVersion("cpython", 3, 8, 20): {
+        ("macos", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "02449f774a12eaaff75844c0f768bb0c62425b7fe216d98ce98b7b8104979841",
+        ),
+        ("macos", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
+            "f4f6802583e838164779ea5f1aa6ce122b0a3129c170854da7fedab411645f44",
+        ),
+        ("linux", "aarch64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "09c6c5e1e27d7723dc3e32e0b35fe2d31501110fe16347fb0d25b587ef570600",
+        ),
+        ("linux", "aarch64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "791ebe9d406a3e4d9f61f2adeb8cb3b88775c29ae378a77741c8ee20c3db9fb4",
+        ),
+        ("windows", "x86", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
+            "6b0815f910867dc2be4349b27752661c54e673f25f06eb87b4131b0fa8e06c33",
+        ),
+        ("windows", "x86", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "6469fa6cd6f19d8021cef539b4a43f636b6a70b72b0c7de3c0fb175750521899",
+        ),
+        ("macos", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "96122cfc7c8ad4d5f80b33c1d6821c885fdc5f61594e3f4bcabb7dac97e6ec04",
+        ),
+        ("macos", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-apple-darwin-install_only.tar.gz",
+            "83fef24e0280f71d03af78710193f84d8d065c36c86d44681ed414b6272fbe4f",
+        ),
+        ("windows", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "ce90b0f28775cde91f8b7e082631a35ac03d0676861b34405adddd1c26fc08ee",
+        ),
+        ("windows", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "d80a6784943679ca8aefeee979fce0446f2fa3ba7c52e460874a0e3b3bf86b0e",
+        ),
+        ("linux", "x86_64", False): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "ddf09080b29cf42752457ad5058a0fe048b947c07bbb244e4005336f5fcba845",
+        ),
+        ("linux", "x86_64", True): (
+            "https://github.com/indygreg/python-build-standalone/releases/download/20240909/cpython-3.8.20%2B20240909-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "ee45d21a2e2d51126e817ee8b070365c58e130382f49d7fa8573d31fcc9c120f",
+        ),
+    },
     PythonVersion("cpython", 3, 8, 19): {
         ("macos", "aarch64", False): (
             "https://github.com/indygreg/python-build-standalone/releases/download/20240814/cpython-3.8.19%2B20240814-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
@@ -3003,28 +3253,28 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str 
     },
     PythonVersion("pypy", 3, 10, 14): {
         ("linux", "aarch64", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-aarch64.tar.bz2",
-            "fc720999bc5050e1d3706b3b6445e695cf42bfc71ebc7c88ed6bb88828b1d385",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-aarch64.tar.bz2",
+            "53b6e5907df869c49e4eae7aca09fba16d150741097efb245892c1477d2395f2",
         ),
         ("linux", "x86", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-linux32.tar.bz2",
-            "0df48aa780159e879ac89a805d143e4a6cd1b842f98046f5a3f865814bfaa2a4",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-linux32.tar.bz2",
+            "e534110e1047da37c1d586c392f74de3424f871d906a2083de6d41f2a8cc9164",
         ),
         ("linux", "x86_64", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-linux64.tar.bz2",
-            "404e6180d6caf9258eaab0c02c72018e9aa8eb03ab9094a0ff17ee5e3b265ac1",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-linux64.tar.bz2",
+            "fdcdb9b24f1a7726003586503fdeb264fd68fc37fbfcea022dcfe825a7fee18b",
         ),
         ("macos", "x86_64", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-macos_x86_64.tar.bz2",
-            "490f2c6ba2489f405444f3b4ad42166da6e2eb73489a9535b206067eaaf21737",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-macos_x86_64.tar.bz2",
+            "6c2c5f2300d7564e711421b4968abd63243cb96f76e363975dd648ebf4a362ee",
         ),
         ("macos", "aarch64", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-macos_arm64.tar.bz2",
-            "6c003376667a95c7a228544649677b9927b8210d6444b901817aad24b8719b93",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-macos_arm64.tar.bz2",
+            "a050e25e8d686853dd5afc363e55625165825dacfb55f8753d8225ebe417cfd2",
         ),
         ("windows", "x86_64", True): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.16-win64.zip",
-            "e08415a2f35c6ecf2342b504bdfde11e4c5eca3fc5ef7fd2214ff064a5a54396",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.17-win64.zip",
+            "cab794a03ddda26238c72942ea6f225612e0dc17c76cac6652da83a95024e6e8",
         ),
     },
     PythonVersion("pypy", 3, 10, 13): {
