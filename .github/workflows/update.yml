@@ -44,5 +44,5 @@ jobs:
         if: steps.update.outcome == 'success'
         uses: ncipollo/release-action@v1
         with:
-          name: steps.update.outputs.VERSION
-          tag: steps.update.outputs.VERSION
+          name: ${{ steps.update.outputs.VERSION }}
+          tag: ${{ steps.update.outputs.VERSION }}
