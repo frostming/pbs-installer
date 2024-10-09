@@ -46,3 +46,4 @@ jobs:
         with:
           name: ${{ steps.update.outputs.VERSION }}
           tag: ${{ steps.update.outputs.VERSION }}
+          token: ${{ secrets.GH_TOKEN }}
