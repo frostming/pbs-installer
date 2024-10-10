@@ -27,7 +27,7 @@ class PythonVersion(NamedTuple):
         if implementation != self.implementation:
             return False
         try:
-            parts = tuple(int(v) for v in request.split("."))
+            parts = tuple(int(v) for v in request.rstrip("t").split("."))
         except ValueError:
             raise ValueError(
                 f"Invalid version: {request!r}, each part must be an integer"
