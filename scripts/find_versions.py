@@ -454,7 +454,7 @@ async def main():
         "X-GitHub-Api-Version": "2022-11-28",
         "Authorization": f"Bearer {token}",
     }
-    client = httpx.AsyncClient(follow_redirects=True, headers=headers)
+    client = httpx.AsyncClient(follow_redirects=True, headers=headers, timeout=30)
 
     finders = [
         CPythonFinder(client),
