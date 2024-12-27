@@ -103,7 +103,7 @@ class Finder:
 class CPythonFinder(Finder):
     implementation = PythonImplementation.CPYTHON
 
-    RELEASE_URL = "https://api.github.com/repos/indygreg/python-build-standalone/releases"
+    RELEASE_URL = "https://api.github.com/repos/astral-sh/python-build-standalone/releases"
 
     FLAVOR_PREFERENCES = [
         "shared-pgo",
