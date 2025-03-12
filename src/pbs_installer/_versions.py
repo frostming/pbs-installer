@@ -5,76 +5,76 @@ from ._utils import PythonVersion
 PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str, str | None]]] = {
     PythonVersion("cpython", 3, 13, 2): {
         ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "ac35036c1c99e300a7dc2c8c409ef8576c5d44e59d7612e5ea9feef8b9950cbb",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "bb9c4b76c64da5bd6c84834327b31163f2262b3d4936530c4a2421dc0b08d4c1",
         ),
         ("macos", "aarch64", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-apple-darwin-freethreaded%2Bpgo%2Blto-full.tar.zst",
-            "3c5e3b09739eec5eabdf2319fb4d69587c4947ad0c7a016b40e1f777730828c4",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-apple-darwin-freethreaded%2Bpgo%2Blto-full.tar.zst",
+            "ea91fd59592f62961a61edad3bbaa917fbdb661cb6d55b3c98027398bd4bee99",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-apple-darwin-install_only.tar.gz",
-            "2b647deb75f5e781ba8fdb01a3c7261344832e22d9d800a9815ac94ddfa509e3",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-apple-darwin-install_only.tar.gz",
+            "2a4323847cbad6c1f243436f5533e15c324a380610f54d95df4d3af162562d08",
         ),
         ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "913aa4806b37041732be9c24d7a7f1786b81b274186ea643971622523bc20e19",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "b995f12d569f3e997f36d5fe098e9e3347d46266573fa1f5778f1cf2c60c607b",
         ),
         ("linux", "aarch64", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-unknown-linux-gnu-freethreaded%2Blto-full.tar.zst",
-            "f3299184ea63522843c6ddf6e8849857becf85e3f09d8e9865cb976ddefbf1d4",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-unknown-linux-gnu-freethreaded%2Blto-full.tar.zst",
+            "1640b5fd736269980624bb4fcf66dc6b827569b0ecccded6bf8db46f2416a52f",
         ),
         ("linux", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-aarch64-unknown-linux-gnu-install_only.tar.gz",
-            "4075bece77791aa77019dad953ebbad427059e120a92eb9809e7cc94e4ae928b",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "3fdd503f8d806dfb7077de559816d23e7a07147f31ae1c68ea4b820a2575083b",
         ),
         ("windows", "x86", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-i686-pc-windows-msvc-freethreaded%2Bpgo-full.tar.zst",
-            "83eee505e0fa8acc6b41eaa5e4d22d19c3c51e1eebc9c1bbd0deac17b22a7b15",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-i686-pc-windows-msvc-freethreaded%2Bpgo-full.tar.zst",
+            "f74d1e7d95235e9d58cc2ea64ea4f407c8078bffac9a4ce7f266c46f15c7792d",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-i686-pc-windows-msvc-install_only.tar.gz",
-            "24d035c78d5943795e8644a44f6db6fff0fe68d1c966846eaec7afa771dcb843",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-i686-pc-windows-msvc-install_only.tar.gz",
+            "bbed3bf0c68acc897650d6e5c7a7f8dba86da2fcaad1fde83c6d158ad7e143e3",
         ),
         ("windows", "x86", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
             "be51b28086459c042a0c8ef8b26e8d8bebba3ca16bfe6efa2c21419a35799c62",
         ),
         ("macos", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "4d333dcf9ed226d176ef9651f42dbbb633bbfb895e893b6da97eef269ffaef44",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "d3c9f97c3e039180cccb05ffd5f3ae78e877770bf2a6a1060ac544b8f5f17e64",
         ),
         ("macos", "x86_64", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-apple-darwin-freethreaded%2Bpgo%2Blto-full.tar.zst",
-            "129be3b47eb81ea4e2d89a65736567ca97d8a6c5ef275927eb642ce468f470b0",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-apple-darwin-freethreaded%2Bpgo%2Blto-full.tar.zst",
+            "989aabe336f2c9148b1945be7fba461b1e3d21e108f062f8da4bd683e54d527c",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-apple-darwin-install_only.tar.gz",
-            "7c306bc2f5110f40cfd8c5590cc8101c41775992965d608c932dcd8de0e753b4",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-apple-darwin-install_only.tar.gz",
+            "f7daea9af1b6a141c16962955e044c12c471bfe727860603930c7b2e42771343",
         ),
         ("windows", "x86_64", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-pc-windows-msvc-freethreaded%2Bpgo-full.tar.zst",
-            "f7a58bf74a7a198ce65c37fc460eb6b262c4296c60290d97ab6fd7b617229961",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-pc-windows-msvc-freethreaded%2Bpgo-full.tar.zst",
+            "5a7c7210d86c947d3f2b457a23b468f2b335b9b3a45f525b93cb0e603eb05944",
         ),
         ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "d65c3d807b27ec34d4ce83367ef63cee504f0ce20fb565939ff9f1e2a513bd54",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "7ec8ef2b7ba67a5e729afc8c0103ad849688d3bf07c92ad0705fd2ccec0990c4",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
             "db918659ecb75b0cbcd646da574e76df586c05ff73205876591c157357012358",
         ),
         ("linux", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-            "368943e93cfb08456725a176d4d0a92e7978ddbfa2d051b033161a541a4e6248",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "e4b1e12dec62300b3c53c12be1c6407790a5c37d1d34a038ac4df288cb1d901b",
         ),
         ("linux", "x86_64", False, True): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-unknown-linux-gnu-freethreaded%2Bpgo%2Blto-full.tar.zst",
-            "67642b4867cce0ddf6bd5eab60a6aa598e2b7ec1f22821eaf7b17343cae90a83",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-unknown-linux-gnu-freethreaded%2Bpgo%2Blto-full.tar.zst",
+            "e6a280e899e86808d7dd8949f815c68bf1f6b1ecf0c0c2ceca64db8f23597b7e",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "6c30bd0f5695c29f23752ccb3973cbc91c8b21b7276292e3090c132a807c05be",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.13.2%2B20250311-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "3fd97628cd025adfee73ac2d404bed0ea9d177492afb91338fb224b56538a446",
         ),
     },
     PythonVersion("cpython", 3, 13, 1): {
@@ -227,52 +227,52 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
     },
     PythonVersion("cpython", 3, 12, 9): {
         ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "678132e4d3e72dd50c3226912debf870ae3e1e9c46080e37b1cd7913d351c7ac",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "454929350a2f959180a312f1f15987da441adf61a86697f26884a953c3551d9d",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-aarch64-apple-darwin-install_only.tar.gz",
-            "8df8d5b1135b91efbdf4548f4f634971570abea701f1b7f8e7e95eae2e091298",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-aarch64-apple-darwin-install_only.tar.gz",
+            "652e90aeaef68e9c726f883a4c160bbbff205403de68ab2c56fced267c9a652d",
         ),
         ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "b261a5b434e6d74b8ca7e924b27db7e5ba5ba82db68c62d0e207f2ee72fd8ee7",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "082ab66d7350951074c4b084c5de4874361c79d5b7c809fd5ba0ea7b0067675a",
         ),
         ("linux", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-aarch64-unknown-linux-gnu-install_only.tar.gz",
-            "c5349011e3d52e024575b2e5b16c9c5580ff09cdd83926c097cc523fa8e7e95c",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "19853e28347214662a5494c5d08ab5f143f0076b11f32b94a8f581c6707b3ad9",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-i686-pc-windows-msvc-install_only.tar.gz",
-            "02a08e461bfd114efb18aa0db42ffed1f2226c2de1ffa449a49379734ed0928f",
-        ),
-        ("windows", "x86", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
-            "5de64b14321a60b143bed087462442bdbc79caccf75c644c156d031abe4ea190",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-i686-pc-windows-msvc-install_only_stripped.tar.gz",
+            "9ac8dd4d4183afc2bb11e52f258e32bc4c554074af3c1d692476dca162b76e18",
         ),
         ("macos", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "47a5098d4f6f4431cc46115abf083832d93f5d690d5eebb4db15a237252e3045",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "9408a8b2a51036d27127e8f0edc7ed379f34c7afd642964b2a0184dde2ce86e3",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-apple-darwin-install_only.tar.gz",
-            "bec81a130f364883d019dffa8d1db0ae8da6f15a4b4da022598eba1817743494",
-        ),
-        ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "0689c8f88dceef4d0c27393fdf595833e8acedf532fcf4e9edc1dc79152e3bb5",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-x86_64-apple-darwin-install_only.tar.gz",
+            "b34429887563a084319b8605c52da53fed228993d17e2fc826840d269b93b7ab",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
             "ef8b7988f2cb5490ebd795af49a34e66d45510c9682fe7938070c697769e3bdc",
         ),
+        ("windows", "x86_64", True, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+            "04df1f563fd02005a05b3c9f194d7009ebdb0b22af8f4ee141111557e8896416",
+        ),
         ("linux", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-            "e7e272fff1d2649d57682ba63c8d67943cd0951a488b885f1d0b0312de670c06",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "4615f16a32710a901318e7ed5e59fa8edde64532e72eab8d2d78875d0bfea753",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "c7ad8230866c03c60bdcff1eb85b7901bb02b8ebb046dacc50f63179127936bf",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.12.9%2B20250311-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "16417562be6eab799e0fd4f5a857b2f6ad3270c34582803bc202e08a99fd3d60",
+        ),
+        ("windows", "x86", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.12.9%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
+            "5de64b14321a60b143bed087462442bdbc79caccf75c644c156d031abe4ea190",
         ),
     },
     PythonVersion("cpython", 3, 12, 8): {
@@ -384,13 +384,13 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-apple-darwin-install_only.tar.gz",
             "899f46eb592fcac4e834c064e4c901e8a4a6b5864e80b18efd2f0b7c3c050584",
         ),
-        ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "93a238ba9707c357c054d665a940e2ef33c7c2e2d4e454c248941e625c3050d9",
-        ),
         ("linux", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-unknown-linux-gnu-install_only.tar.gz",
             "caac1033f68f69d8978dc8c6b6964cfb9d8a111abc55c03403bd4ece63f331f3",
+        ),
+        ("linux", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "93a238ba9707c357c054d665a940e2ef33c7c2e2d4e454c248941e625c3050d9",
         ),
         ("windows", "x86", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240909/cpython-3.12.6%2B20240909-i686-pc-windows-msvc-install_only.tar.gz",
@@ -481,8 +481,8 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "3b017ab70e2f11b95d909317fc4e76c000ece588461058a642bf74db77cec267",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240726/cpython-3.12.4%2B20240726-aarch64-apple-darwin-install_only.tar.gz",
-            "1801025e825c04b3907e4ef6220a13607bc0397628c9485897073110ef7fde15",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240726/cpython-3.12.4%2B20240726-aarch64-apple-darwin-install_only_stripped.tar.gz",
+            "ef6948e836f531bd7a58ffbe602803ff1c83c65f99d1da19be369ea61f136c93",
         ),
         ("linux", "aarch64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240726/cpython-3.12.4%2B20240726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
@@ -727,52 +727,52 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
     },
     PythonVersion("cpython", 3, 11, 11): {
         ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "5925d91016eeb6fabee8a3fae8f0f85caea3bb907a40ee180300456151d58cd5",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "6a384e9af9a817808c5e53fc414d7c854f89249a9047e95b4dac329303c3e866",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-aarch64-apple-darwin-install_only.tar.gz",
-            "6dd5603e5570b8c4e1abf1ef2a329f195dd052890b1fa3b01b7406552a4f45a1",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-aarch64-apple-darwin-install_only.tar.gz",
+            "929f3d87fd88d0b4498b6ccfbc9031306910c7b508763c7f70e70d9c9cd5737c",
         ),
         ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "10603fb3e53868b9fc4c9aa57ab8e915bf0f3cf2bb6916c2aa90b639ad7766b6",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "499fce7334c9a586fcd7379f989f0b5b81b98b98a63350bd74ed23bb149efa08",
         ),
         ("linux", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-aarch64-unknown-linux-gnu-install_only.tar.gz",
-            "a6a70f0a18ced0edcfeda2bfb1b157b4abee01ff82e7483b65dd5f7c2211f5b2",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "7fa42453e88a220cc3d3d88229afd0caa1e1fdf5778acaa5045916646d8782f8",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-i686-pc-windows-msvc-install_only.tar.gz",
-            "acde42eb3797265464f03f284c87fc8bd5f5b43ff44fd32f76b7a01e8b544d21",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-i686-pc-windows-msvc-install_only.tar.gz",
+            "07265b4265ac5d13d664d2b28810f7d44c11f25e04682a44f56cc9a2439951b3",
         ),
         ("windows", "x86", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
             "7a0a9c92cc2fc088e232a4cd5ce7572da8b05b4cb9bef950244c7902a598f4e7",
         ),
         ("macos", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "50601e2f784d1412c707f6426a9c6452afab77f8ad406c7ecade6e2539d63cf9",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "c1937b935d57749e97e2abe574c455cac850b54f8f2d1845518dcbde05a08ce0",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-apple-darwin-install_only.tar.gz",
-            "1f1afc064b523b67c06e6d4b024a8dbb8df5fa12f0f0018b218c855491833451",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-x86_64-apple-darwin-install_only.tar.gz",
+            "a83562c9fa8d89af09648a53481aee7f426239d03216cbb1c90f3e1485c4832a",
         ),
         ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "0f7c63d3bd684419a9e16c746c6850cf30c16a7e263f533108eb5911e6d326c3",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "289b4ff5d55b41149ea6f75028e24dbbe10aa3cf2b08cb98f3293a03d904bff6",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
             "6ae7c6cb4f42f2c2d554bfe9a4ad1900acd6f9cf0c1125f4e4812489a2d82722",
         ),
         ("linux", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-            "2334b1632c46de8ae7299e6fe3283484cbbb3f6e6b0e0cd85468066870a45f8f",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "9fccf5df1c16bfc0148c807c59eb562c6f29dfb3096e87315d9da6e1a3ce6b25",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.11.11%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "7f91b0eb7a371b770be6e623a99906e5a2fd49c96589790828e03abb8ac7c39a",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.11.11%2B20250311-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "d9eafdf714016c605b44f412e5bbf048c317a2f78a79a6063d3f722c4535a1f3",
         ),
     },
     PythonVersion("cpython", 3, 11, 10): {
@@ -834,13 +834,13 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-aarch64-apple-darwin-install_only.tar.gz",
             "8760e908f25fdc8a01f4d1b101854ac047b4eacb723fb2593a168fb989c86eef",
         ),
-        ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "63cd27b797589b66689c5be6495c707311d8272b284ad20faff1814b00134ac7",
-        ),
         ("linux", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-aarch64-unknown-linux-gnu-install_only.tar.gz",
             "c74a3313e081dda8360d1824baa4eae5303333555bf8440ec2de521731e39165",
+        ),
+        ("linux", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "63cd27b797589b66689c5be6495c707311d8272b284ad20faff1814b00134ac7",
         ),
         ("windows", "x86", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-i686-pc-windows-msvc-install_only.tar.gz",
@@ -859,8 +859,8 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "76073305812c093ce840df9c4c17068aa69da8d951e7376ef48f43376986a13e",
         ),
         ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "4c71d25731214b8a960d1d87510f24179d819249c5b434aaf7135818421b6215",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+            "8ac54a8d711ef0d49b62a2c3521c2d0403f1b221dc9d84c5f85fe48903e82523",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -871,8 +871,8 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "73b3bef1220efcfd61dec42af94b9792937fe388bcc7064017c8f3b8e4636187",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "9a332ba354f3b4e8a96a15db6b2805a7a31dcc1b6b9c1b7b93e5246949fbb50f",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.11.9%2B20240814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+            "daa487c7e73005c4426ac393273117cf0e2dc4ab9b2eeda366e04cd00eea00c9",
         ),
     },
     PythonVersion("cpython", 3, 11, 8): {
@@ -1258,71 +1258,71 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
         ),
     },
     PythonVersion("cpython", 3, 10, 16): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "04c98e7cd56902391224b3b4ec26a403ecf68347ece751785a10aec7d560db10",
+        ("linux", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "4d64c7aa2afdaec4407c6ad262d243729333c68592699503ba82a42d301c0eeb",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-aarch64-apple-darwin-install_only.tar.gz",
-            "92a7c8d80e997cc7cac0e0bd2f8d2eb1f4235d6b467a7ce411b3a5b2ea77ba14",
-        ),
-        ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "d731e9fbe9df51d2c6b07ac97143bbca6398541a352b430845f14198b717c4ef",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-aarch64-apple-darwin-install_only_stripped.tar.gz",
+            "2867d119e88761148af5b0e803f54a646797b6b4c70f9dabcf834a92fe80c8e7",
         ),
         ("linux", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-aarch64-unknown-linux-gnu-install_only.tar.gz",
-            "d986500a3fdf6dd4d6efe689d80b3fdc3e59311953c2f09fc29f13b2c34fd458",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz",
+            "42635e2b908d73a1f97dbc1af77b45968498d09be3832ca0ff80d78186c15d14",
+        ),
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "dff56f4f0957702bd58aa876593d10022998298eea7644d5976ffa4887135b04",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-i686-pc-windows-msvc-install_only.tar.gz",
-            "fd4daa6ddae7a82428e359fafffd1690b24df66049851a87c594ae128483f60c",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-i686-pc-windows-msvc-install_only.tar.gz",
+            "9a2a9210d55cdb2d47b9c8c84a361f2a8c9e0dd9c71aad3f95f15d82f6757dcb",
         ),
         ("windows", "x86", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
             "bd4f387f3934ffe64d16d97e3bb861c7773ac6efeec3511dce9c7f79beb88380",
         ),
         ("macos", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "24c138114e9838ada79824f6310c03542a2db18bbc4b1839a518a2ff36864998",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "3e834bcb4cfe8e158880ddcd341a4c71aa39cfb75598629ce6640c19f758a318",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-apple-darwin-install_only.tar.gz",
-            "2c8df84bafb06dec79b83b6de047cd16e69cb4c2de3dea46caab53bbd229eb74",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-x86_64-apple-darwin-install_only.tar.gz",
+            "2d45455e3b71fabedd266aa22789ba6dffd278073e282c3f78746579d8af68cf",
         ),
         ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "07937dd953dcbc6de76ff6ccf38dccb224f9ead595a46596ebaf1c6d4b3a745c",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "e9502814cf831be43b98908bc46ef1d70c6f97a80fc9f93224119a1a25ac8bf5",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
             "2d2a9acb0a1c5ccb55e0422b6dac3bfd4e2b52b5b879095f237da50e7615857a",
         ),
         ("linux", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-            "df03c234aedbc10ddab7e885ad8c32bd11aa856d9a1e433f620ce06e7f0b7108",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "311522a860903a07977904268028ad861f102226563fe10485867da77c507b89",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.10.16%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "7689ca9426fa67271c5e8bb0df19e7182e988609d4ae6850cbb22019092a7173",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.10.16%2B20250311-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "fa6a4f258af00a1dcd6c89dcc13f77b752249dddf91eb02e30bc2620c325f93f",
         ),
     },
     PythonVersion("cpython", 3, 10, 15): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "41c84c6a96f45e6eaa5ff012806ae180a5a758e0c8027b88295b7c2a28a1c82a",
-        ),
         ("macos", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-apple-darwin-install_only.tar.gz",
             "f64776f455a44c24d50f947c813738cfb7b9ac43732c44891bc831fa7940a33c",
         ),
-        ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "1ee866fe8c3a2fdf310defd9492aaa9d4d26b93b8ee9573525a860cdeacfc8fe",
-        ),
         ("linux", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-unknown-linux-gnu-install_only.tar.gz",
             "eb58581f85fde83d1f3e8e1f8c6f5a15c7ae4fdbe3b1d1083931f9167fdd8dbc",
+        ),
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "41c84c6a96f45e6eaa5ff012806ae180a5a758e0c8027b88295b7c2a28a1c82a",
+        ),
+        ("linux", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "1ee866fe8c3a2fdf310defd9492aaa9d4d26b93b8ee9573525a860cdeacfc8fe",
         ),
         ("windows", "x86", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.10.15%2B20241016-i686-pc-windows-msvc-install_only.tar.gz",
@@ -1358,21 +1358,21 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
         ),
     },
     PythonVersion("cpython", 3, 10, 14): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "ca1bf0cf71ef42a302bc9df6096ac6ae399b971b426e7b620481d86b00fffa8c",
-        ),
         ("macos", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-apple-darwin-install_only.tar.gz",
             "c9fbd43c47ebc15f3b326d518e3f4df2fed98db226cd16f97ecbcc496c099d5d",
         ),
-        ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "56183ed135dbdaaa6b189a6b0e6b6bcf3f26074297721bdbe9648cdc5247937c",
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "ca1bf0cf71ef42a302bc9df6096ac6ae399b971b426e7b620481d86b00fffa8c",
         ),
         ("linux", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-unknown-linux-gnu-install_only.tar.gz",
             "232921e70965f78dc32e2ed4d15f97b45d24ac68dbc5d6f4ff402f81bad11eda",
+        ),
+        ("linux", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "56183ed135dbdaaa6b189a6b0e6b6bcf3f26074297721bdbe9648cdc5247937c",
         ),
         ("windows", "x86", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-i686-pc-windows-msvc-install_only.tar.gz",
@@ -1387,8 +1387,8 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "75b7453594f41a4d6e50efb643b1717067642ad3cd85fc6151dec1d4fcb15810",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-x86_64-apple-darwin-install_only.tar.gz",
-            "9e3df0cd6624f7943e1c4b72527356e1ad6edb59b3cf36562e0d380eb3e2b424",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-x86_64-apple-darwin-install_only_stripped.tar.gz",
+            "4404f44ec69c0708d4d88e98f39c2c1fe3bd462dc6a958b60aaf63028550c485",
         ),
         ("windows", "x86_64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.10.14%2B20240814-x86_64-pc-windows-msvc-install_only.tar.gz",
@@ -1408,13 +1408,13 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
         ),
     },
     PythonVersion("cpython", 3, 10, 13): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "57b83a4aa32bdbe7611f1290313ef24f2574dff5fa59181c0ccb26c14c688b73",
-        ),
         ("macos", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-aarch64-apple-darwin-install_only.tar.gz",
             "5fdc0f6a5b5a90fd3c528e8b1da8e3aac931ea8690126c2fdb4254c84a3ff04a",
+        ),
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "57b83a4aa32bdbe7611f1290313ef24f2574dff5fa59181c0ccb26c14c688b73",
         ),
         ("linux", "aarch64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-aarch64-unknown-linux-gnu-lto-full.tar.zst",
@@ -1466,13 +1466,13 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
         ),
     },
     PythonVersion("cpython", 3, 10, 12): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "a7d0cadbe867cc53dd47d7327244154157a7cca02edb88cf3bb760a4f91d4e44",
-        ),
         ("macos", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-apple-darwin-install_only.tar.gz",
             "bc66c706ea8c5fc891635fda8f9da971a1a901d41342f6798c20ad0b2a25d1d6",
+        ),
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "a7d0cadbe867cc53dd47d7327244154157a7cca02edb88cf3bb760a4f91d4e44",
         ),
         ("linux", "aarch64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-aarch64-unknown-linux-gnu-lto-full.tar.zst",
@@ -1582,13 +1582,13 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
         ),
     },
     PythonVersion("cpython", 3, 10, 9): {
-        ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "2508b8d4b725bb45c3e03d2ddd2b8441f1a74677cb6bd6076e692c0923135ded",
-        ),
         ("macos", "aarch64", True, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-aarch64-apple-darwin-install_only.tar.gz",
             "018d05a779b2de7a476f3b3ff2d10f503d69d14efcedd0774e6dab8c22ef84ff",
+        ),
+        ("macos", "aarch64", False, False): (
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "2508b8d4b725bb45c3e03d2ddd2b8441f1a74677cb6bd6076e692c0923135ded",
         ),
         ("linux", "aarch64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-aarch64-unknown-linux-gnu-lto-full.tar.zst",
@@ -2093,52 +2093,52 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
     },
     PythonVersion("cpython", 3, 9, 21): {
         ("macos", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "49c77bb1e589042c21a0c3c162255840175a79c3e128b5afc07c4341955ae529",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "db59854f284b6afa163c588018f57250be2172d9e306ea38ffd1048237ac7c5d",
         ),
         ("macos", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-aarch64-apple-darwin-install_only.tar.gz",
-            "bbe3b179be32bb3e07f0e365b58f80cbe351909eaaac6e3b872a143ae6da8398",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-aarch64-apple-darwin-install_only.tar.gz",
+            "24442e8a5d3bc3363641ed880801118dc711492a0e2db94075a93a8c21d7867d",
         ),
         ("linux", "aarch64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-aarch64-unknown-linux-gnu-lto-full.tar.zst",
-            "5334ae0ff382660f81a1dc0d2c05ee53aebf5eb0b7eeba11b5dc916af7a6a590",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-aarch64-unknown-linux-gnu-lto-full.tar.zst",
+            "5418a3dff4a657047b79dc7307c9fbbcd6d3d307b39eaec5f2fadae3aa03ccb7",
         ),
         ("linux", "aarch64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-aarch64-unknown-linux-gnu-install_only.tar.gz",
-            "ec463ab394e91d799d112733c13f0422ae0ae78b723d6298da81b08c334beeb5",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-aarch64-unknown-linux-gnu-install_only.tar.gz",
+            "f90d68b0724782860075362a4af4f3194677fbaa6e0e462e53b155440e0e6c48",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-i686-pc-windows-msvc-install_only.tar.gz",
-            "4200043d95d8ce02360af2f663057e75fd93e657179a9a49c48d10caf9876480",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-i686-pc-windows-msvc-install_only.tar.gz",
+            "defa12bb9cf242207b146ecf5f4e9281023a01901c664c8e8f791c7370ecc5e2",
         ),
         ("windows", "x86", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
             "4686987f21343d331627a2a5a9ad87f0ee049bf3ecd9473ea963edeea04888e6",
         ),
         ("macos", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
-            "4a5e0990acac3470e11c321cee7bae4353623105953a443147ee2ba537e03cd6",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-x86_64-apple-darwin-pgo%2Blto-full.tar.zst",
+            "316c7be438f843454cafd7504690920f5b48bedb864602aa0683b4a98d53974d",
         ),
         ("macos", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-apple-darwin-install_only.tar.gz",
-            "2d0e8c7482eed36fc038cf80871a7da43b2dde93334806d5f87a2f97cff7c78e",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-x86_64-apple-darwin-install_only.tar.gz",
+            "6b7be2b4a08c13aaeaffc69e559182f70004fae2f70ea0a65f03d3d61f856b59",
         ),
         ("windows", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-pc-windows-msvc-install_only.tar.gz",
-            "174d43461298953e34ead7c5c12f7510a89bebcbfdf782500543a7a209676f25",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-x86_64-pc-windows-msvc-install_only.tar.gz",
+            "12800c73e5be0245f58be592a7b95029aa24da51ec0e2262a0d98a492e3a5f18",
         ),
         ("windows", "x86_64", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst",
             "36b68a77fa1e835c3dd8b6155811b27ee7a9898b2c17dfca88c894f062267e08",
         ),
         ("linux", "x86_64", False, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-            "0ce9519bac4d6c9764cdebb9bf0a0473694c8ed994d4e71586d6cdc0482a688f",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
+            "bba6a243fdc580211917c2210efe4d71193e450c744633b8333d18da0db542d1",
         ),
         ("linux", "x86_64", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.9.21%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz",
-            "b2b17c55e67666a9e88701f0a73f4d7ece3ba3d33c473abc91239ff8114f2ce0",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20250311/cpython-3.9.21%2B20250311-x86_64-unknown-linux-gnu-install_only.tar.gz",
+            "2cb4fe00786c50015d53fa0f21474119c40ed18b6bf5263d9bc35ec6b9467526",
         ),
     },
     PythonVersion("cpython", 3, 9, 20): {
@@ -2209,8 +2209,8 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
             "ebe8ce15d3617e69219e27dc2aa39932aee9df8bf85d2ad46b157d309e3fa5d3",
         ),
         ("windows", "x86", True, False): (
-            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.9.19%2B20240814-i686-pc-windows-msvc-install_only.tar.gz",
-            "91e77e82e15c175bde41e6f1276d418e3bbb9378cb66d1b2fcb6f1b586375483",
+            "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.9.19%2B20240814-i686-pc-windows-msvc-install_only_stripped.tar.gz",
+            "1c78c6dd763e6d583c3c3f917544bc4446d0e9fbe2b6e206042fa801ff9fb9ab",
         ),
         ("windows", "x86", False, False): (
             "https://github.com/astral-sh/python-build-standalone/releases/download/20240814/cpython-3.9.19%2B20240814-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -3775,54 +3775,54 @@ PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str
     },
     PythonVersion("pypy", 3, 11, 11): {
         ("linux", "aarch64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-aarch64.tar.bz2",
-            "95bc3021cb9be2aa766ecb776c215e97ae8c0dda99dd48840b40b5b87d90bc45",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-aarch64.tar.bz2",
+            "13207dbf81ce24e96da760b1b863627b77bb20b1fb4c95191e02a0b72383df74",
         ),
         ("linux", "x86", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-linux32.tar.bz2",
-            "70357a69cdbf4ce449b5743901fcd36208e0a89eadcfb4d2ebdc9b4711a0612c",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-linux32.tar.bz2",
+            "5c6cdafd0a0abd14ca59926ed1b6aeb13b228c18b4b46de655aae48734c731ad",
         ),
         ("linux", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-linux64.tar.bz2",
-            "df5fa534800ff09d990e50ca4fdb02d8a06b9ed948dbcb3a09bea0739ef42de7",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-linux64.tar.bz2",
+            "9177d9e0bb91b05f921c642cb0ff71a0f3653b5d29a42d40d6a078c15b75720f",
         ),
         ("macos", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-macos_x86_64.tar.bz2",
-            "4f2274ffb4b787fd5b5f15cd61f7fef5a3710bf0ecbd4293bf0251035b468865",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-macos_x86_64.tar.bz2",
+            "a2439f9d30dfdae96a5e9101c7dc54a8a68b56c9d7314ea399b0a25d3e87ebb2",
         ),
         ("macos", "aarch64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-macos_arm64.tar.bz2",
-            "cc4d6dd621dffd474eb9a2d01e5844d1b6a6f88b404aac2c48a9c267b5370df4",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-macos_arm64.tar.bz2",
+            "7704e0d5302e53920d32dcfe9afeeb10436d4c94233e8830cf603aa955a861c1",
         ),
         ("windows", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.11-v7.3.18-win64.zip",
-            "ccbea242f623700027e713d845dff5c7f7a5806413bbce229d3dcb88715970fd",
+            "https://downloads.python.org/pypy/pypy3.11-v7.3.19-win64.zip",
+            "b61c7c1dbf879eda6f779c374bfbbeecd3f618ada08404705a1a19d39df48dbd",
         ),
     },
-    PythonVersion("pypy", 3, 10, 19): {
+    PythonVersion("pypy", 3, 10, 16): {
         ("linux", "aarch64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-aarch64.tar.bz2",
-            "e843aecd48eb06b625af67891b99e3440313cfb64c6851fc37df1e5572c8ef9e",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-aarch64.tar.bz2",
+            "af27a589178f11198e2244ab65ca510630ba97c131d7ccc4021eb5bc58de7f57",
         ),
         ("linux", "x86", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-linux32.tar.bz2",
-            "34ef09a481254aad0f22bf09fd7c99efb65ffef4f79f5b4222505f55f8d9c22e",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-linux32.tar.bz2",
+            "e63a4fcad2641ee541e852918befb513abf04ce7070f743a50778cae9f9da80e",
         ),
         ("linux", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-linux64.tar.bz2",
-            "834ccd4544bb47112a66977add7e47f30619f74061ae990876bcba95d98c27c5",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-linux64.tar.bz2",
+            "c73ac2cc2380ac9227fd297482bf2a3e17a80618ba46db7544d535515321ec1e",
         ),
         ("macos", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-macos_x86_64.tar.bz2",
-            "b7031cbf815b7ba26ed2503b76ee3e73d7322b55f3671219019e8385042e212f",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-macos_x86_64.tar.bz2",
+            "2c5e5c2a33ac882551d7f28b98d19d486b8995aa50824a73b4edcc6aeec35c63",
         ),
         ("macos", "aarch64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-macos_arm64.tar.bz2",
-            "1d47da22bc9f7b5329f97c9c7b3ee0b051252ff1e82ca76999ad2d44758be41f",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-macos_arm64.tar.bz2",
+            "3db8a03fc496164801646844d7f3b12baa0adb3ad9a0b7cb124521bc2e168a36",
         ),
         ("windows", "x86_64", True, False): (
-            "https://downloads.python.org/pypy/pypy3.10-v7.3.18-win64.zip",
-            "e7ae89c5d45efcc927425281c870d0ce62cd624628f869cb0a25a0647e39a7be",
+            "https://downloads.python.org/pypy/pypy3.10-v7.3.19-win64.zip",
+            "c0d07bba6c8fb4e5804f4a8b3f8ef07cc3d89f6ad1db42a45ffb9be60bbb7cc2",
         ),
     },
     PythonVersion("pypy", 3, 10, 14): {
