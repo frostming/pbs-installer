@@ -174,6 +174,7 @@ class CPythonFinder(Finder):
         for page in range(1, pages):
             log(f"Fetching indygreg release page {page}")
             resp = await self.client.get(self.RELEASE_URL, params={"page": page})
+            resp.raise_for_status()
             await resp.aread()
             rows = resp.json()
             if not rows:
