@@ -173,7 +173,7 @@ class CPythonFinder(Finder):
 
         for page in range(1, pages):
             log(f"Fetching indygreg release page {page}")
-            resp = await self.client.get(self.RELEASE_URL, params={"page": page})
+            resp = await self.client.get(self.RELEASE_URL, params={"page": page, "per_page": 10})
             resp.raise_for_status()
             await resp.aread()
             rows = resp.json()
@@ -454,6 +454,7 @@ async def main():
     headers = {
         "X-GitHub-Api-Version": "2022-11-28",
         "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
     }
     client = httpx.AsyncClient(follow_redirects=True, headers=headers, timeout=30)
 
