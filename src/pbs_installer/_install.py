@@ -60,20 +60,17 @@ def get_download_link(
     """
     from ._versions import PYTHON_VERSIONS
 
+    if free_threaded and not request.endswith("t"):
+        request += "t"
+
     for py_ver, urls in PYTHON_VERSIONS.items():
         if not py_ver.matches(request, implementation):
             continue
 
-        if request.endswith("t"):
-            free_threaded = True
-
-        matched = urls.get((platform, arch, not build_dir, free_threaded))
+        matched = urls.get((platform, arch, not build_dir))
         if matched is not None:
             return py_ver, matched
-        if (
-            not build_dir
-            and (matched := urls.get((platform, arch, False, free_threaded))) is not None
-        ):
+        if not build_dir and (matched := urls.get((platform, arch, False))) is not None:
             return py_ver, matched
     raise ValueError(
         f"Could not find a version matching version={request!r}, implementation={implementation}"

@@ -50,14 +50,13 @@ class Version(NamedTuple):
         return f"{self.major}.{self.minor}.{self.patch}"
 
     def __neg__(self) -> Self:
-        return Version(-self.major, -self.minor, -self.patch)
+        return type(self)(-self.major, -self.minor, -self.patch)
 
 
 class VersionKey(NamedTuple):
     platform: str
     arch: str
     install_only: bool
-    freethreaded: bool
 
     def __repr__(self) -> str:
         return repr(tuple(self))
@@ -185,12 +184,10 @@ class CPythonFinder(Finder):
                     download = self.parse_download_url(url)
                     if download is not None:
                         install_only = download.triple.flavor == "install_only"
-                        freethreaded = "freethreaded" in download.filename
                         key = VersionKey(
                             download.triple.platform,
                             download.triple.arch,
                             install_only,
-                            freethreaded,
                         )
                         (
                             results.setdefault(download.version, {})
@@ -403,17 +400,17 @@ class PyPyFinder(Finder):
 
 def build_map(
     downloads: list[PythonDownload],
-) -> dict[tuple[PythonImplementation, Version], dict[VersionKey, tuple[str, str | None]]]:
+) -> dict[tuple[PythonImplementation, Version, bool], dict[VersionKey, tuple[str, str | None]]]:
     versions: dict[
-        tuple[PythonImplementation, Version], dict[VersionKey, tuple[str, str | None]]
+        tuple[PythonImplementation, Version, bool], dict[VersionKey, tuple[str, str | None]]
     ] = {}
     for download in sorted(downloads, key=lambda d: (d.implementation, -d.version)):
-        item = versions.setdefault((download.implementation, download.version), {})
+        freethreaded = "freethreaded" in download.filename
+        item = versions.setdefault((download.implementation, download.version, freethreaded), {})
         key = VersionKey(
             download.triple.platform,
             download.triple.arch,
             download.triple.flavor == "install_only",
-            "freethreaded" in download.filename,
         )
         if key in item:
             continue
@@ -431,12 +428,12 @@ def render(downloads: list[PythonDownload], file: IO[str] | None = None):
     write("from __future__ import annotations")
     write("from ._utils import PythonVersion")
     write(
-        "PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool, bool], tuple[str, str | None]]] = {"
+        "PYTHON_VERSIONS: dict[PythonVersion, dict[tuple[str, str, bool], tuple[str, str | None]]] = {"
     )
 
     for key, item in build_map(downloads).items():
         write(
-            f"    PythonVersion('{key[0]}', {key[1].major}, {key[1].minor}, {key[1].patch}): {item!r},"
+            f"    PythonVersion('{key[0]}', {key[1].major}, {key[1].minor}, {key[1].patch}, {key[2]}): {item!r},"
         )
     write("}")
 
@@ -458,11 +455,11 @@ async def main():
     }
     client = httpx.AsyncClient(follow_redirects=True, headers=headers, timeout=30)
 
-    finders = [
+    finders: list[Finder] = [
         CPythonFinder(client),
         PyPyFinder(client),
     ]
-    downloads = []
+    downloads: list[PythonDownload] = []
 
     log("Fetching all Python downloads and generating code.")
     async with client:
