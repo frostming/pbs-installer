@@ -19,12 +19,15 @@ class PythonVersion(NamedTuple):
     major: int
     minor: int
     micro: int
+    freethreaded: bool = False
 
     def __str__(self) -> str:
-        return f"{self.implementation}@{self.major}.{self.minor}.{self.micro}"
+        return f"{self.implementation}@{self.major}.{self.minor}.{self.micro}{'t' if self.freethreaded else ''}"
 
     def matches(self, request: str, implementation: str) -> bool:
         if implementation != self.implementation:
+            return False
+        if self.freethreaded != request.endswith("t"):
             return False
         try:
             parts = tuple(int(v) for v in request.rstrip("t").split("."))
