@@ -33,7 +33,7 @@ class PlatformTriple(NamedTuple):
     arch: str
     platform: str
     environment: str | None
-    flavor: str | None
+    flavor: str
 
 
 class Version(NamedTuple):
@@ -104,17 +104,25 @@ class CPythonFinder(Finder):
 
     RELEASE_URL = "https://api.github.com/repos/astral-sh/python-build-standalone/releases"
 
-    FLAVOR_PREFERENCES = [
+    # Flavors in URLs are identified via substring match using the specified search order, so
+    # correct identification requires combined flavours be listed before less optimized builds
+    FLAVOR_PREFERENCES_FULL = [
+        # For full installs, prefer more optimizations and shared library builds over static builds
         "shared-pgo",
         "shared-noopt",
         "pgo+lto",
         "pgo",
         "lto",
     ]
+    FLAVOR_PREFERENCES_INSTALL = [
+        # For install-only use, prefer the smaller downloads without debug symbols
+        "install_only_stripped",
+        "install_only",
+    ]
+    FLAVOR_PREFERENCES = FLAVOR_PREFERENCES_FULL + FLAVOR_PREFERENCES_INSTALL
     HIDDEN_FLAVORS = [
         "debug",
         "noopt",
-        "install_only",
     ]
     SPECIAL_TRIPLES = {
         "macos": "x86_64-apple-darwin",
@@ -183,7 +191,7 @@ class CPythonFinder(Finder):
                     url = asset["browser_download_url"]
                     download = self.parse_download_url(url)
                     if download is not None:
-                        install_only = download.triple.flavor == "install_only"
+                        install_only = download.triple.flavor.startswith("install_only")
                         key = VersionKey(
                             download.triple.platform,
                             download.triple.arch,
@@ -192,13 +200,13 @@ class CPythonFinder(Finder):
                         (
                             results.setdefault(download.version, {})
                             # For now, we only group by arch and platform, because Rust's PythonVersion doesn't have a notion
-                            # of environment. Flavor will never be used to sort download choices and must not be included in grouping.
+                            # of environment. Flavor is only used to sort download choices and must not be included in grouping.
                             .setdefault(key, [])
                             .append(download)
                         )
 
         downloads = []
-        for _, platform_downloads in results.items():
+        for platform_downloads in results.values():
             for flavors in platform_downloads.values():
                 best = self.pick_best_download(flavors)
                 if best is not None:
@@ -236,11 +244,11 @@ class CPythonFinder(Finder):
     def parse_triple(cls, triple: str) -> PlatformTriple | None:
         """Parse a triple into a PlatformTriple object."""
 
-        def match_flavor(triple: str) -> str | None:
+        def match_flavor(triple: str) -> str:
             for flavor in cls.FLAVOR_PREFERENCES + cls.HIDDEN_FLAVORS:
                 if flavor in triple:
                     return flavor
-            return None
+            return ""
 
         def match_mapping(
             pieces: list[str], mapping: dict[str, str]
@@ -410,7 +418,7 @@ def build_map(
         key = VersionKey(
             download.triple.platform,
             download.triple.arch,
-            download.triple.flavor == "install_only",
+            download.triple.flavor.startswith("install_only"),
         )
         if key in item:
             continue
