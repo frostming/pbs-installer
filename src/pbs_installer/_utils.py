@@ -77,6 +77,8 @@ def unpack_zst(filename: str, destination: StrPath) -> None:
     """Unpack the zstd compressed tarfile to the destination"""
     import tempfile
 
+    if sys.version_info >= (3, 14):
+        from compression import zstd
     try:
         import zstandard as zstd
     except ModuleNotFoundError:
