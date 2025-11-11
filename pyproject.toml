@@ -18,7 +18,7 @@ download = [
     "httpx<1,>=0.27.0",
 ]
 install = [
-    "zstandard>=0.21.0",
+    "zstandard>=0.21.0; python_version<'3.14'",
 ]
 all = [
     "pbs-installer[download,install]"
