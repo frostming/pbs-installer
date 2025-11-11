@@ -1,7 +1,18 @@
 from __future__ import annotations
 
-import tarfile
+import sys
 from typing import TYPE_CHECKING, NamedTuple
+
+if sys.version_info >= (3, 14):
+    import tarfile
+    ZSTD_SUPPORT = True
+else:
+    try:
+        from backports.zstd import tarfile
+        ZSTD_SUPPORT = True
+    except ModuleNotFoundError:
+        import tarfile
+        ZSTD_SUPPORT = False
 
 if TYPE_CHECKING:
     from _typeshed import StrPath
@@ -67,28 +78,12 @@ def _unpack_tar(tf: tarfile.TarFile, destination: StrPath) -> None:
     tf.extractall(destination, members=members)
 
 
-def unpack_tar(filename: str, destination: StrPath) -> None:
+def unpack_tar(filename: str, destination: StrPath, original_filename: str) -> None:
     """Unpack the tarfile to the destination"""
+    if not ZSTD_SUPPORT and original_filename.endswith(".zstd"):
+        raise ModuleNotFoundError("backports.zstd is required to unpack .zst files")
     with tarfile.open(filename) as z:
         _unpack_tar(z, destination)
-
-
-def unpack_zst(filename: str, destination: StrPath) -> None:
-    """Unpack the zstd compressed tarfile to the destination"""
-    import tempfile
-
-    try:
-        import zstandard as zstd
-    except ModuleNotFoundError:
-        raise ModuleNotFoundError("zstandard is required to unpack .zst files") from None
-
-    dctx = zstd.ZstdDecompressor()
-    with tempfile.TemporaryFile(suffix=".tar") as ofh:
-        with open(filename, "rb") as ifh:
-            dctx.copy_stream(ifh, ofh)
-        ofh.seek(0)
-        with tarfile.open(fileobj=ofh) as z:
-            _unpack_tar(z, destination)
 
 
 def unpack_zip(filename: str, destination: StrPath) -> None:
