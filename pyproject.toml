@@ -4,7 +4,7 @@ description = "Installer for Python Build Standalone"
 authors = [
     {name = "Frost Ming", email = "me@frostming.com"},
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
 dynamic = ["version"]
@@ -18,7 +18,7 @@ download = [
     "httpx<1,>=0.27.0",
 ]
 install = [
-    "zstandard>=0.21.0",
+    "backports.zstd>=1.0.0 ; python_version<'3.14'",
 ]
 all = [
     "pbs-installer[download,install]"
