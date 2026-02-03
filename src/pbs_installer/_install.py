@@ -139,7 +139,7 @@ def install_file(
         build_dir: Whether to include the `build/` directory from indygreg builds
     """
 
-    from ._utils import unpack_tar, unpack_zip, unpack_zst
+    from ._utils import unpack_tar, unpack_zip
 
     if original_filename is None:
         original_filename = str(filename)
@@ -150,12 +150,10 @@ def install_file(
         original_filename,
     )
     filename = cast(str, filename)
-    if original_filename.endswith(".zst"):
-        unpack_zst(filename, destination)
-    elif original_filename.endswith(".zip"):
+    if original_filename.endswith(".zip"):
         unpack_zip(filename, destination)
     else:
-        unpack_tar(filename, destination)
+        unpack_tar(filename, destination, original_filename)
 
 
 def install(
