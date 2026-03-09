@@ -38,7 +38,7 @@ options:
   -l, --list            List installable versions
 
 Install Arguments:
-  version               The version of Python to install, e.g. 3.8,3.10.4
+  version               The version of Python to install, e.g. 3.14, 3.10.4, pypy@3.10
   --version-dir         Install to a subdirectory named by the version
   -d DESTINATION, --destination DESTINATION
                         The directory to install to

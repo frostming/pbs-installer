@@ -43,7 +43,7 @@ def get_download_link(
     """Get the download URL matching the given requested version.
 
     Parameters:
-        request: The version of Python to install, e.g. 3.8,3.10.4
+        request: The version of Python to install, e.g. 3.14, 3.10.4, pypy@3.10
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
