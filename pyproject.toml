@@ -27,6 +27,16 @@ all = [
 [project.scripts]
 pbs-install = "pbs_installer.__main__:main"
 
+[dependency-groups]
+doc = [
+    "mkdocs>=1.5.3",
+    "mkdocs-material>=9.5.14",
+    "mkdocstrings[python]>=0.24",
+]
+dev = [
+    "mypy>=1.9.0",
+]
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
@@ -36,16 +46,6 @@ source = "scm"
 
 [tool.pdm.scripts]
 update = { shell = "./scripts/update.sh" }
-
-[tool.pdm.dev-dependencies]
-doc = [
-    "mkdocs>=1.5.3",
-    "mkdocs-material>=9.5.14",
-    "mkdocstrings[python]>=0.24",
-]
-dev = [
-    "mypy>=1.9.0",
-]
 
 [tool.ruff]
 line-length = 100

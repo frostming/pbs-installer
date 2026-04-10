@@ -5,13 +5,16 @@ from typing import TYPE_CHECKING, NamedTuple
 
 if sys.version_info >= (3, 14):
     import tarfile
+
     ZSTD_SUPPORT = True
 else:
     try:
         from backports.zstd import tarfile
+
         ZSTD_SUPPORT = True
     except ModuleNotFoundError:
         import tarfile
+
         ZSTD_SUPPORT = False
 
 if TYPE_CHECKING:
