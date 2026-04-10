@@ -66,6 +66,10 @@ def main() -> None:
     install_group.add_argument(
         "--platform", choices=platforms, help="Override the platform to install"
     )
+    install_group.add_argument(
+        "--base-url",
+        help="Override the download base URL, e.g. a local mirror directory URL",
+    )
     parser.add_argument("-v", "--verbose", help="Enable verbose logging", action="store_true")
     parser.add_argument("-l", "--list", action=ListAction, help="List installable versions")
 
@@ -82,6 +86,7 @@ def main() -> None:
         platform=args.platform,
         implementation=impl,
         build_dir=args.build_dir,
+        base_url=args.base_url,
     )
     print("Done!")
 
