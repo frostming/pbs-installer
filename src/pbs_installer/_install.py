@@ -12,7 +12,7 @@ from ._utils import PythonVersion, get_arch_platform
 if TYPE_CHECKING:
     from typing import Literal
 
-    import httpx
+    import httpx2
     from _typeshed import StrPath
 
     PythonImplementation = Literal["cpython", "pypy"]
@@ -78,7 +78,7 @@ def get_download_link(
 
 
 def download(
-    python_file: PythonFile, destination: StrPath, client: httpx.Client | None = None
+    python_file: PythonFile, destination: StrPath, client: httpx2.Client | None = None
 ) -> str:
     """Download the given url to the destination.
 
@@ -96,12 +96,12 @@ def download(
     url, checksum = python_file
     logger.debug("Downloading url %s to %s", url, destination)
     try:
-        import httpx
+        import httpx2
     except ModuleNotFoundError:
-        raise RuntimeError("You must install httpx to use this function") from None
+        raise RuntimeError("You must install httpx2 to use this function") from None
 
     if client is None:
-        client = httpx.Client(trust_env=True, follow_redirects=True)
+        client = httpx2.Client(trust_env=True, follow_redirects=True)
 
     filename = unquote(url.rsplit("/")[-1])
     hasher = hashlib.sha256()
@@ -160,7 +160,7 @@ def install(
     request: str,
     destination: StrPath,
     version_dir: bool = False,
-    client: httpx.Client | None = None,
+    client: httpx2.Client | None = None,
     arch: str | None = None,
     platform: str | None = None,
     implementation: PythonImplementation = "cpython",
@@ -176,7 +176,7 @@ def install(
         request: The version of Python to install, e.g. 3.8,3.10.4
         destination: The directory to install to
         version_dir: Whether to install to a subdirectory named with the python version
-        client: A httpx.Client to use for downloading
+        client: A httpx2.Client to use for downloading
         arch: The architecture to install, e.g. x86_64, arm64
         platform: The platform to install, e.g. linux, macos
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'

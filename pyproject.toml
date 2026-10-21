@@ -15,7 +15,7 @@ Documentation = "http://pbs-installer.readthedocs.io"
 
 [project.optional-dependencies]
 download = [
-    "httpx<1,>=0.27.0",
+    "httpx2<3,>=2.14.0",
 ]
 install = [
     "backports.zstd>=1.0.0 ; python_version<'3.14'",
