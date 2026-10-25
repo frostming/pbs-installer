@@ -39,6 +39,7 @@ def get_download_link(
     implementation: PythonImplementation = "cpython",
     build_dir: bool = False,
     free_threaded: bool = False,
+    base_url: str | None = None,
 ) -> tuple[PythonVersion, PythonFile]:
     """Get the download URL matching the given requested version.
 
@@ -49,6 +50,7 @@ def get_download_link(
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
         build_dir: Whether to include the `build/` directory from indygreg builds
         free_threaded: Whether to install the freethreaded version of Python
+        base_url: Override the download base URL. Defaults to `PBS_INSTALLER_BASE_URL` when unset.
 
     Returns:
         A tuple of the PythonVersion and the download URL
@@ -58,12 +60,14 @@ def get_download_link(
         (PythonVersion(kind='cpython', major=3, minor=10, micro=13),
         'https://github.com/indygreg/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst')
     """
-    from ._versions import PYTHON_VERSIONS
+    from ._versions import PYTHON_VERSIONS, get_python_versions
+
+    versions = PYTHON_VERSIONS if base_url is None else get_python_versions(base_url)
 
     if free_threaded and not request.endswith("t"):
         request += "t"
 
-    for py_ver, urls in PYTHON_VERSIONS.items():
+    for py_ver, urls in versions.items():
         if not py_ver.matches(request, implementation):
             continue
 
@@ -166,6 +170,7 @@ def install(
     implementation: PythonImplementation = "cpython",
     build_dir: bool = False,
     free_threaded: bool = False,
+    base_url: str | None = None,
 ) -> None:
     """Download and install the requested python version.
 
@@ -182,6 +187,7 @@ def install(
         implementation: The implementation of Python to install, allowed values are 'cpython' and 'pypy'
         build_dir: Whether to include the `build/` directory from indygreg builds
         free_threaded: Whether to install the freethreaded version of Python
+        base_url: Override the download base URL. Defaults to `PBS_INSTALLER_BASE_URL` when unset.
     Examples:
         >>> install("3.10", "./python")
         Installing cpython@3.10.4 to ./python
@@ -200,6 +206,7 @@ def install(
         implementation=implementation,
         build_dir=build_dir,
         free_threaded=free_threaded,
+        base_url=base_url,
     )
     if version_dir:
         destination = os.path.join(destination, str(ver))
