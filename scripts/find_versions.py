@@ -22,8 +22,8 @@ from enum import StrEnum
 from typing import IO, TYPE_CHECKING, NamedTuple
 from urllib.parse import unquote
 
-import httpx
-from httpx import HTTPStatusError
+import httpx2
+from httpx2 import HTTPStatusError
 
 if TYPE_CHECKING:
     from typing import Self
@@ -166,7 +166,7 @@ class CPythonFinder(Finder):
 """
     )
 
-    def __init__(self, client: httpx.AsyncClient):
+    def __init__(self, client: httpx2.AsyncClient):
         self.client = client
 
     async def find(self) -> list[PythonDownload]:
@@ -349,7 +349,7 @@ class PyPyFinder(Finder):
         "linux": "linux",
     }
 
-    def __init__(self, client: httpx.AsyncClient):
+    def __init__(self, client: httpx2.AsyncClient):
         self.client = client
 
     async def find(self) -> list[PythonDownload]:
@@ -461,7 +461,7 @@ async def main():
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github+json",
     }
-    client = httpx.AsyncClient(follow_redirects=True, headers=headers, timeout=30)
+    client = httpx2.AsyncClient(follow_redirects=True, headers=headers, timeout=30)
 
     finders: list[Finder] = [
         CPythonFinder(client),
