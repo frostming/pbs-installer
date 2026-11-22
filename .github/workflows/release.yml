@@ -7,6 +7,11 @@ on:
     tags:
       - "*"
   workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to build and publish"
+        required: true
+        type: string
 
 jobs:
   test:
@@ -53,6 +58,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ inputs.tag || github.ref }}
 
       - uses: actions/setup-python@v5
         with:
